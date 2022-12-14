@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Heading, Stack } from "@chakra-ui/react";
 import React from "react";
 import { CategoryItems } from "../Components/CategoryItems";
 import { ScrollingExample } from "../Components/PopUpModel";
@@ -434,13 +434,13 @@ import { ProductItems } from "../Components/ProductItems";
 
 //  export const CategoryItems = ({ img, para }) => {
 
-//   return <div  >
-//     <div>
+//   return <Box  >
+//     <Box>
 //       <img width={"100px"} src={img} />
 //       <p>{para}</p>
-//     </div>
+//     </Box>
 
-//   </div>
+//   </Box>
 // }
 
 
@@ -452,9 +452,9 @@ import { ProductItems } from "../Components/ProductItems";
 //   // if (type == "guide") {
 //   //   // console.log(type)
 //   //   return (
-//   //     <div>
+//   //     <Box>
 //   //       <img src={guide_Img} alt="pic" />
-//   //     </div>
+//   //     </Box>
 
 
 //   //   )
@@ -464,21 +464,21 @@ import { ProductItems } from "../Components/ProductItems";
 //   if (time) {
 //     // console.log(type)
 //     return (
-//       <div>
-//         <div>
+//       <Box>
+//         <Box>
 //           <h3>{title}</h3>
 //           <p>{price} <li>{time}</li></p>
 //           <hr />
 //           {para?.map((el) => <li key={el.id}>{el.para}</li>)}
 //           <button>Edit your package</button>
-//         </div>
-//         <div>
-//           <div>
+//         </Box>
+//         <Box>
+//           <Box>
 //           <button>Add</button>
-//           </div>
-         
-//         </div>
-//       </div>
+//           </Box>
+
+//         </Box>
+//       </Box>
 
 
 
@@ -488,24 +488,24 @@ import { ProductItems } from "../Components/ProductItems";
 //   if (!time&&!guide_Img&&!type) {
 //     // console.log(type)
 //     return (
-//       <div style={{display:"flex"}} >
-//          <div >
+//       <Box style={{display:"flex"}} >
+//          <Box >
 //         <h3>{title}</h3>
 //         <p>star</p>
 //         <p>{price}</p>
 //         <hr />
 //         {para?.map((el)=><li key={el.id}>{el.para}</li>)}
 //         <button>View details</button>
-//       </div>
-//         <div>
-//           <div>
+//       </Box>
+//         <Box>
+//           <Box>
 
 //           <img width={"100%"} src={img} alt="img" />
-//           </div>
+//           </Box>
 
 //           <button>Add</button>
-//         </div>
-//       </div>
+//         </Box>
+//       </Box>
 
 
 
@@ -1025,20 +1025,11 @@ let currentPage = "SalonForMen"
 
 
 const Product = () => {
-  return <Box>
-    <div style={{width:"100%", border: "1px solid red", display: "flex", justifyContent: "space-evenly",flexWrap:"wrap" }}>
-     
-      <h1>{products[currentPage].head}</h1>
+  return <Box p="10" margin={"auto"} width={"85%"} >
+    <Box my={"10"} py={"10"} style={{ width: "100%", border: "1px solid red", display: "flex", justifyContent: "space-evenly", flexWrap: "wrap" }}>
 
-      {/* <iframe width="50%" height="313" src="https://www.youtube.com/embed/UwI71cKFR6g"
-        // title="Urban Company | Introducing Roll-on Waxing ft. Yami Gautam| Salon at Home"
-        
-        // contentEditable="false"
-       
-        // frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen></iframe> */}
+      <Heading>{products[currentPage].head}</Heading>
 
-      {/* <AspectRatio ratio={16 / 9} > */}
       <iframe
         style={{ borderRadius: '10px' }}
         title='naruto'
@@ -1047,19 +1038,26 @@ const Product = () => {
         src="https://www.youtube.com/embed/UwI71cKFR6g"
 
       />
-    
-      {/* </AspectRatio> */}
-    </div>
 
-    <Box display={"flex"} justifyContent="space-evenly">
+     
+    </Box>
+
+    <Box Box p="5" margin={"auto"} display={"flex"} justifyContent="space-evenly">
       {products[currentPage].categories?.map((el, i) => <CategoryItems key={i} {...el} />)}
     </Box>
-    <div>
-      {
-        // products[currentPage].productList.map((el, i) => <ProductItems key={i} {...el} />)
-        products[currentPage].productList.map((el, i) => <ScrollingExample key={i} {...el} />)
-      }
-    </div>
+
+    <Box display={"flex"} >
+      <Box>
+        {
+          // products[currentPage].productList.map((el, i) => <ProductItems key={i} {...el} />)
+          products[currentPage].productList.map((el, i) => <ScrollingExample key={i} {...el} />)
+        }
+      </Box>
+      <Box width={"80%"} bg="teal">
+
+      </Box>
+
+    </Box>
   </Box>;
 };
 

@@ -21,6 +21,8 @@
 //               ]
 //             },
 
+import { Box, Button, Img } from "@chakra-ui/react"
+
 
 
 //               "id": "1",
@@ -41,63 +43,70 @@
 
 export const ProductItems = ({ id, title, price, time, para, type, guide_Img, img }) => {
 
-    // if (type == "guide") {
-    //   // console.log(type)
-    //   return (
-    //     <div>
-    //       <img src={guide_Img} alt="pic" />
-    //     </div>
-    //   )
-    // }
-  
-    if (time) {
-      return (
-        <div>
-          <div>
-            <h3>{title}</h3>
-            <p>{price} <li>{time}</li></p>
-            <hr />
-            {para?.map((el) => <li key={el.id}>{el.para}</li>)}
-            <button>Edit your package</button>
-          </div>
-          <div>
-            <div>
-            <button>Add</button>
-            </div>
-           
-          </div>
-        </div>
-  
-  
-  
-      )
-    }
-  
-    if (!time&&!guide_Img&&!type) {
-      // console.log(type)
-      return (
-        <div style={{display:"flex",border:"1px solid teal" , padding:"5px"}} >
-           <div >
+  // if (type == "guide") {
+  //   // console.log(type)
+  //   return (
+  //     <Box>
+  //       <img src={guide_Img} alt="pic" />
+  //     </Box>
+  //   )
+  // }
+
+  if (time) {
+    return (
+      <Box display={"flex"} p="10" justifyContent="space-around"  >
+        <Box textAlign={"left"}  width="80%" >
+
+          <h3>{title}</h3>
+          <p>{price} <li>{time}</li></p>
+          <hr />
+          {para?.map((el) => <li key={el.id}>{el.para}</li>)}
+          <Button>Edit your package</Button>
+        </Box>
+        <Box margin={"auto"} width={"15%"}  >
+          <Box>
+            <Button textColor={"violet"} >Add</Button>
+          </Box>
+
+        </Box>
+      </Box>
+
+
+
+    )
+  }
+
+  if (!time && !guide_Img && !type) {
+    // console.log(type)
+    return (
+      <Box display={"flex"} p="10" justifyContent="space-around"  >
+        <Box flexDirection={"column"} display={"flex"} justifyContent={"space-between"} textAlign={"left"}  width="80%" >
           <h3>{title}</h3>
           <p>star</p>
           <p>{price}</p>
           <hr />
-          {para?.map((el)=><li key={el.id}>{el.para}</li>)}
-          <button>View details</button>
-        </div>
-          <div>
-            <div>
-  
-            <img width={"100%"} src={img} alt="img" />
-            </div>
-  
-            <button>Add</button>
-          </div>
-        </div>
-  
-  
-  
-      )
-    }
-  
+          {para?.map((el) => <li key={el.id}>{el.para}</li>)}
+          <Box>
+
+          <Button textColor="violet" variant={"ghost"} >View details</Button>
+          </Box>
+        </Box>
+        <Box margin={"auto"} width={"15%"}  >
+          <Box  >
+            <Box >
+              <Img rounded={"10"} width={"100%"} src={img} alt="img" />
+
+            </Box>
+          </Box>
+
+          <Button position={"relative"} top="-15px">Add</Button>
+        </Box>
+
+      </Box>
+
+
+
+    )
   }
+
+}
