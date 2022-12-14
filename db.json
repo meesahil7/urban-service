@@ -1,0 +1,128 @@
+{
+    "productPage":{
+        "SalonForWomen":{
+            "Head":"Salon Prime",
+            "Video":"https://youtu.be/UwI71cKFR6g",
+            "categories":[
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                    "Ctg-title":"Bestseller Packages"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1635313403372-16db5c.png",
+                    "Ctg-title":"Make your own package"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1655977998579-8de14b.png",
+                    "Ctg-title":"Waxing"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+                    "Ctg-title":"Facial & cleanup"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+                    "Ctg-title":"Manicure"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+                    "Ctg-title":"Pedicure"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+                    "Ctg-title":"Threading & face wax"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+                    "Ctg-title":"Bleach & detan"
+                },
+                {
+                    "Ctg-Img":"https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+                    "Ctg-title":"Hair care"
+                }
+            ],
+            "productList": [
+                {
+                  "type": "norm"
+                  ,
+                  "title": "Style & Trim"
+                },
+                {
+                  "type": "guide"
+                  ,
+                  "guide_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
+                },
+                {
+                  "type": "norm"
+                  ,
+                  "title": "Style & Trim"
+                },
+                {
+                  "type": "guide"
+                  ,
+                  "guide_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
+                }
+              ]
+        },
+        "SalonForMen": {
+            "head": "Salon Prime For Men",
+            "video": "link",
+            "categories": [
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              },
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              },
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              },
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              },
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              },
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              },
+              {
+                "Ctg_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg",
+                "Ctg_title": "Bestseller Packages"
+              }
+        
+            ],
+            "productList": [
+              {
+                "type": "norm"
+                ,
+                "title": "Style & Trim"
+              },
+              {
+                "type": "guide"
+                ,
+                "guide_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
+              },
+              {
+                "type": "norm"
+                ,
+                "title": "Style & Trim"
+              },
+              {
+                "type": "guide"
+                ,
+                "guide_Img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
+              }
+            ]
+          }
+    }
+    
+    
+}
+

@@ -1,7 +1,16 @@
-import React from "react";
+const InitState={
+  isAuth:false,
+  isLoading:false,
+  isError:false,
+  token:""
+}
+const reducer = (store=InitState,action) => {
+  switch(action){
 
-const reducer = () => {
-  return <div>reducer</div>;
+    default :
+    return store
+  }
+  // return store
 };
 
-export default reducer;
+export  {reducer};
