@@ -1,10 +1,35 @@
 .App {
   text-align: center;
 }
-
+.html{
+  scroll-behavior: smooth;;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.CtgBx{
+  
+  padding: 5;
+margin:"auto";
+display:flex;
+justify-content :space-evenly;
+position:"sticky";
+top:0;
+background-color:white;
+z-Index:1;
+  
+}
+
+.offers{ 
+display: flex;
+  height: calc(100vh - 153px); 
+  align-self: baseline;
+  overflow: auto;
+position: sticky;
+z-index: 0;
+top: 153px;
+bottom: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {

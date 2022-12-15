@@ -1,3 +1,4 @@
+import { Box, Button, Divider, Heading, Img, Spacer } from "@chakra-ui/react"
 
 
 //products data structure
@@ -21,8 +22,6 @@
 //               ]
 //             },
 
-import { Box, Button, Img } from "@chakra-ui/react"
-
 
 
 //               "id": "1",
@@ -43,40 +42,51 @@ import { Box, Button, Img } from "@chakra-ui/react"
 
 export const ProductItems = ({ id, title, price, time, para, type, guide_Img, img }) => {
 
-  // if (type == "guide") {
-  //   // console.log(type)
-  //   return (
-  //     <Box>
-  //       <img src={guide_Img} alt="pic" />
-  //     </Box>
-  //   )
-  // }
-
-  if (time) {
+  if (type == "guide") {
+    // console.log(type)
     return (
-      <Box display={"flex"} p="10" justifyContent="space-around"  >
+      <Box textAlign={"left"} >
+        <Heading>{title}</Heading>
+        <br />
+        
+        <Img rounded={5} width="80%" src={guide_Img} alt="pic" />
+        <br />
+      </Box>
+    )
+  }
+  Box
+  if (time&&!img) {
+    return (
+      <Box   display={"flex"} p="10" justifyContent="space-around"  >
         <Box textAlign={"left"}  width="80%" >
 
-          <h3>{title}</h3>
+          <Heading size={"l"} >{title}</Heading>
           <p>{price} <li>{time}</li></p>
-          <hr />
+          {/* <hr /> */}
+          <Box my={2} >
+
+          <Divider  borderColor='blackAlpha' />
+          </Box>
           {para?.map((el) => <li key={el.id}>{el.para}</li>)}
           <Button>Edit your package</Button>
         </Box>
-        <Box margin={"auto"} width={"15%"}  >
-          <Box>
-            <Button textColor={"violet"} >Add</Button>
+        <Box width={"15%"}  >
+          <Box display={"flex"} justifyContent="end" >
+            <Button  textColor={"violet"} >Add</Button>
           </Box>
 
         </Box>
+        {/* <Divider  borderColor='black.200' /> */}
+     
       </Box>
+      
 
 
 
     )
   }
 
-  if (!time && !guide_Img && !type) {
+  if (!time) {
     // console.log(type)
     return (
       <Box display={"flex"} p="10" justifyContent="space-around"  >
@@ -84,7 +94,11 @@ export const ProductItems = ({ id, title, price, time, para, type, guide_Img, im
           <h3>{title}</h3>
           <p>star</p>
           <p>{price}</p>
-          <hr />
+          {/* <hr /> */}
+          <Box my={2} >
+
+          <Divider  borderColor='black.200' />
+          </Box>
           {para?.map((el) => <li key={el.id}>{el.para}</li>)}
           <Box>
 

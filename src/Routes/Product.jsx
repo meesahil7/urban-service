@@ -1,8 +1,7 @@
-import { Box, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 import { CategoryItems } from "../Components/CategoryItems";
 import { ScrollingExample } from "../Components/PopUpModel";
-import { ProductItems } from "../Components/ProductItems";
 {/* <iframe width="734" height="413" src="https://www.youtube.com/embed/UwI71cKFR6g" title="Urban Company | Introducing Roll-on Waxing ft. Yami Gautam| Salon at Home" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */ }
 
 
@@ -615,26 +614,15 @@ const products = {
 
     ],
     productList: [
-      {
-        type: "norm"
-        ,
-        title: "Style & Trim"
-      },
+     
       {
         type: "guide"
         ,
+        title:"Best Seller",
         guide_Img: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
       },
-      {
-        type: "norm"
-        ,
-        title: "Style & Trim"
-      },
-      {
-        type: "guide"
-        ,
-        guide_Img: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
-      },
+      
+   
       {
         "id": "1",
         "title": "Full chocolate | chocolate roll-on wacxing",
@@ -702,6 +690,13 @@ const products = {
             "para": "Head massage (20 min)"
           }
         ]
+      },
+      {
+        type: "guide"
+        ,
+        title:"Make your Packages",
+
+        guide_Img: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
       },
       {
         "id": "4",
@@ -1025,8 +1020,25 @@ let currentPage = "SalonForMen"
 
 
 const Product = () => {
+
+
+
+
+
+
+
+
+
   return <Box p="10" margin={"auto"} width={"85%"} >
-    <Box my={"10"} py={"10"} style={{ width: "100%", border: "1px solid red", display: "flex", justifyContent: "space-evenly", flexWrap: "wrap" }}>
+
+    <Box my={"10"} py={"10"}
+      style={{
+        width: "100%",
+        // border: "1px solid red",
+        display: "flex",
+        justifyContent: "space-evenly",
+        flexWrap: "wrap"
+      }}>
 
       <Heading>{products[currentPage].head}</Heading>
 
@@ -1038,13 +1050,34 @@ const Product = () => {
         src="https://www.youtube.com/embed/UwI71cKFR6g"
 
       />
-
-     
     </Box>
 
-    <Box Box p="5" margin={"auto"} display={"flex"} justifyContent="space-evenly">
-      {products[currentPage].categories?.map((el, i) => <CategoryItems key={i} {...el} />)}
+    <Box position={"sticky"}
+      top="0" zIndex="1"
+    >
+      <Flex
+        p="5"
+        margin={"auto"}
+        display={"flex"}
+        justifyContent="space-evenly"
+
+
+        bg={"white"}
+
+      // borderBottom={"0.1px solid gray"}
+      >
+        {products[currentPage].categories?.map((el, i) => <CategoryItems key={i} {...el} />)}
+      </Flex >
+          
+          <Divider borderColor='gray.400' />
+
     </Box>
+
+
+    {/* Category Divider */}
+
+
+
 
     <Box display={"flex"} >
       <Box>
@@ -1053,11 +1086,50 @@ const Product = () => {
           products[currentPage].productList.map((el, i) => <ScrollingExample key={i} {...el} />)
         }
       </Box>
-      <Box width={"80%"} bg="teal">
 
+
+      {/* Product and Offer Divider */}
+
+      <Box mx={"60px"} >
+        <Divider orientation="vertical" borderColor='gray.400' />
       </Box>
 
+          
+
+      <Box className="Dh" width="60%" flexDirection={"row"} >
+        
+          <Box  className="offers"flexDirection={"column"}>
+         <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>
+        <Heading>Cart</Heading>   
+          <Box zIndex={1} bg={"white"}  position={"sticky"} top="0" justifyContent={"space-between"} display={"flex"}  >
+          <Box  >
+            <Heading>Price</Heading>
+          </Box>
+          <Box>
+            <Button >View Cart</Button>
+          </Box>
+        </Box>
+          </Box>
+       
+    
+
     </Box>
+      </Box>
+
   </Box>;
 };
 

@@ -1,5 +1,5 @@
 import "./App.css";
-import { ScrollingExample } from "./Components/PopUpModel";
+// import { ScrollingExample } from "./Components/PopUpModel";
 import MainRoutes from "./Routes/MainRoutes";
 
 function App() {

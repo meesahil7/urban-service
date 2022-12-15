@@ -14,6 +14,9 @@ import {
     Button,
     Box,
     Img,
+    Divider,
+    Spacer,
+    StackDivider,
   } from '@chakra-ui/react'
 import { ProductItems } from './ProductItems'
 
@@ -24,17 +27,12 @@ export function ScrollingExample(el) {
     const btnRef = React.useRef(null)
     return (
       <>
-        {/* <RadioGroup value={scrollBehavior} onChange={setScrollBehavior}>
-          <Stack direction='row'>
-            <Radio value='inside'>inside</Radio>
-            <Radio value='outside'>outside</Radio>
-          </Stack>
-        </RadioGroup> */}
-        <Box  onClick={onOpen} border="1px">
+       
+        <Box onClick={onOpen}>
         <ProductItems  {...el} />
-
-        {/* <Button mt={3}  onClick={onOpen}>
-        </Button> */}
+      
+        <Divider borderColor='gray.400' />
+        
         </Box>
          
   
@@ -46,20 +44,22 @@ export function ScrollingExample(el) {
           isOpen={isOpen}
           scrollBehavior={scrollBehavior}
         >
-          <ModalOverlay  backdropFilter="auto" 
+          <ModalOverlay 
+          // border={0}
+          backdropFilter="auto" 
         backdropBrightness="28%"
         />
           <ModalContent    >
             <ModalCloseButton />
             <ModalBody p="0.2" m="0" >
-                <div>
+                <Box>
                     <img width={"100%"} src={el.img} alt="" />
             <ModalHeader>{el.title}</ModalHeader>
                 <ProductItems  {...el} />
                    
                    
                     
-                </div>
+                </Box>
             </ModalBody>
             <ModalFooter>
               <Button onClick={onClose}>Close</Button>

@@ -1,12 +1,15 @@
-import { Img } from "@chakra-ui/react"
+import { Box, Img } from "@chakra-ui/react"
 
 export const CategoryItems = ({ img, para }) => {
 
-    return <div  >
-      <div>
-        <Img width={"100px"} src={img} />
-        <p>{para}</p>
-      </div>
+    return <Box width={"100%"} filter='auto' brightness='90%'>
+      <Box display={"flex"}  p={"4"} justifyContent={"center"} width={"100%"} >
+        <Img  rounded={10} width={"74px"} src={img} />
+      </Box>
+      <Box >
+        <p >{para}</p>
+
+      </Box>
   
-    </div>
+    </Box>
   }
