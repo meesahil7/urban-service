@@ -1,0 +1,1 @@
+export const SEND_OTP_SUCCESS = "SEND_OTP_SUCCESS";

@@ -1,7 +1,21 @@
-import React from "react";
+import { SEND_OTP_SUCCESS } from "./actionTypes";
 
-const reducer = () => {
-  return <div>reducer</div>;
+const initialState = {
+  cell: "",
+  showOtp: false,
+};
+
+const reducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case SEND_OTP_SUCCESS:
+      return {
+        cell: payload,
+        showOtp: true,
+      };
+    default:
+      return state;
+  }
 };
 
 export { reducer };
