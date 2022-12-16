@@ -1,6 +1,6 @@
 import { Flex , Box , Link, Text} from "@chakra-ui/react";
 import "./Style.css";
-import carpenter from "./image/carpenter.png";
+import carpenter from "./images/carpenter.png";
 
 const NewCategory = ()=>{
     return(
