@@ -6,8 +6,8 @@ export const CategoryItems = ({ img, para }) => {
       <Box display={"flex"}  p={"4"} justifyContent={"center"} width={"100%"} >
         <Img  rounded={10} width={"74px"} src={img} />
       </Box>
-      <Box >
-        <p >{para}</p>
+      <Box lineHeight={1}>
+        <p color="black" >{para}</p>
 
       </Box>
   

@@ -1,4 +1,8 @@
-import { Box, Button, Divider, Heading, Img, Spacer } from "@chakra-ui/react"
+import { Box, Button, Divider, Heading, HStack, Img, Spacer } from "@chakra-ui/react"
+import { useEffect } from "react"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addCartData } from "../Redux/Cart/action"
 
 
 //products data structure
@@ -40,28 +44,83 @@ import { Box, Button, Divider, Heading, Img, Spacer } from "@chakra-ui/react"
 //               ]
 //             },
 
-export const ProductItems = ({ id, title, price, time, para, type, guide_Img, img }) => {
+export const ProductItems = ({id, title, price, time, para, type, guide_Img, img }) => {
+
+  const cart=useSelector((store)=>store.CartReducer.cart)
+
+
+  const dispatch=useDispatch()
+
+  // const handleAddToCart=()=>{
+  //       let Check=false
+  //       cart.forEach((el)=>{
+  //       // console.log(el.id,id)
+  //       if(el.id==id){
+  //         console.log(el.id,id)
+  //         Check=true
+  //         return 
+  //       }
+  //     })
+
+  //     // console.log(Check)
+
+  //    if(Check){
+
+  //      alert("Product is already added")
+  //       return
+  //    }else{
+  //      let newCartData={
+  //     id:id,
+  //     title:title,
+  //     price:price,
+  //     time:time,
+  //     para:para,
+  //     img:img
+  //   }
+
+  //   dispatch(addCartData(newCartData))
+  //   alert("Product added successfully")
+
+  //    }
+
+   
+    
+
+    
+
+  // }
+
+
+  useEffect(()=>{
+
+
+  },[])
 
   if (type == "guide") {
     // console.log(type)
     return (
       <Box textAlign={"left"} >
+        <Box my={"4"}>
+
         <Heading>{title}</Heading>
+        </Box>
         <br />
         
-        <Img rounded={5} width="80%" src={guide_Img} alt="pic" />
+        <Img rounded={10} width="95%" src={guide_Img} alt="pic" />
         <br />
       </Box>
     )
   }
-  Box
+
   if (time&&!img) {
     return (
       <Box   display={"flex"} p="10" justifyContent="space-around"  >
         <Box textAlign={"left"}  width="80%" >
 
           <Heading size={"l"} >{title}</Heading>
-          <p>{price} <li>{time}</li></p>
+          <HStack> <Heading size={"l"}>
+          ₹ {price}
+            </Heading>  <li>{time}</li></HStack>
           {/* <hr /> */}
           <Box my={2} >
 
@@ -72,7 +131,11 @@ export const ProductItems = ({ id, title, price, time, para, type, guide_Img, im
         </Box>
         <Box width={"15%"}  >
           <Box display={"flex"} justifyContent="end" >
-            <Button  textColor={"violet"} >Add</Button>
+            <Button 
+            
+            // onClick={handleAddToCart}
+            
+            textColor={"violet"} >Add</Button>
           </Box>
 
         </Box>
@@ -86,14 +149,15 @@ export const ProductItems = ({ id, title, price, time, para, type, guide_Img, im
     )
   }
 
+  // Products With Image
   if (!time) {
     // console.log(type)
     return (
       <Box display={"flex"} p="10" justifyContent="space-around"  >
         <Box flexDirection={"column"} display={"flex"} justifyContent={"space-between"} textAlign={"left"}  width="80%" >
-          <h3>{title}</h3>
+          <Heading size="l">{title}</Heading>
           <p>star</p>
-          <p>{price}</p>
+          <Heading size={"l"}>Starts at ₹ {price}</Heading>
           {/* <hr /> */}
           <Box my={2} >
 
@@ -113,7 +177,11 @@ export const ProductItems = ({ id, title, price, time, para, type, guide_Img, im
             </Box>
           </Box>
 
-          <Button position={"relative"} top="-15px">Add</Button>
+          <Button 
+          
+          // onClick={handleAddToCart}
+          
+          position={"relative"} top="-15px">Add</Button>
         </Box>
 
       </Box>

@@ -1,8 +1,13 @@
 .App {
   text-align: center;
+  font-family:sans-serif
 }
-.html{
+html{
   scroll-behavior: smooth;;
+}
+.H{
+  height: calc(100vh - 164px); 
+  /* display:flex; */
 }
 .App-logo {
   height: 40vmin;
@@ -12,7 +17,7 @@
   
   padding: 5;
 margin:"auto";
-display:flex;
+/* display:flex; */
 justify-content :space-evenly;
 position:"sticky";
 top:0;
@@ -23,12 +28,13 @@ z-Index:1;
 
 .offers{ 
 display: flex;
-  height: calc(100vh - 153px); 
+  /* height: calc(100vh - 153px);  */
+  height: fit-content;
   align-self: baseline;
-  overflow: auto;
+  /* overflow: auto; */
 position: sticky;
 z-index: 0;
-top: 153px;
+top: 164px;
 bottom: 0;
 }
 

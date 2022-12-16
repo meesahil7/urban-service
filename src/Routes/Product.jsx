@@ -1,7 +1,12 @@
-import { Box, Button, Divider, Flex, Heading } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Divider, Flex, Heading, VStack } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {useDispatch,useSelector}from "react-redux"
 import { CategoryItems } from "../Components/CategoryItems";
+import { PopUpForUSsafe } from "../Components/PopUpForUSSafe";
 import { ScrollingExample } from "../Components/PopUpModel";
+import {useParams, useSearchParams} from "react-router-dom"
+import { addCartData } from "../Redux/Cart/action";
+import { useEffect } from "react";
 {/* <iframe width="734" height="413" src="https://www.youtube.com/embed/UwI71cKFR6g" title="Urban Company | Introducing Roll-on Waxing ft. Yami Gautam| Salon at Home" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */ }
 
 
@@ -73,7 +78,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //             {
 //               "id": "1",
 //               "title": "Full chocolate | chocolate roll-on wacxing",
-//               "price": "₹849",
+//               "price": "849",
 //               "time": "1 hr 5 mins",
 //               "para": [
 //                 {
@@ -93,7 +98,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //             {
 //               "id": "2",
 //               "title": "Glow getter",
-//               "price": "₹1619",
+//               "price": "1619",
 //               "time": "1 hr 25 mins",
 //               "para": [
 //                 {
@@ -109,7 +114,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //             {
 //               "id": "3",
 //               "title": "Make your own package-roll on special",
-//               "price": "₹1284",
+//               "price": "1284",
 //               "time": "1 hr 50 mins",
 //               "para": [
 //                 {
@@ -141,7 +146,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //             {
 //               "id": "4",
 //               "title": "Make your own package",
-//               "price": "₹1850",
+//               "price": "1850",
 //               "time": "2 hr 50 mins",
 //               "para": [
 //                 {
@@ -181,7 +186,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //             {
 //               "id": "5",
 //               "title": "Complete honey waxing",
-//               "price": "₹399",
+//               "price": "399",
 //               "time": "1 hr 10 mins",
 //               "para": [
 //                 {
@@ -208,7 +213,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "1",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100967218-f08380.png",
 //               "title": "Full body",
-//               "price": "₹1399",
+//               "price": "1399",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -224,7 +229,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "2",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100955968-c5b3f1.png",
 //               "title": "Stomach",
-//               "price": "₹299",
+//               "price": "299",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -236,7 +241,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "3",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100969960-ef6f74.png",
 //               "title": "Fruit cleanup",
-//               "price": " Starts at ₹699",
+//               "price": "699",
 //               "time": "2 hrs 20 mins",
 //               "para": [
 //                 {
@@ -253,7 +258,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "4",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1634707058605-fd6260.png",
 //               "title": "Glow Facial",
-//               "price": " Starts at ₹1099",
+//               "price": "1099",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -269,7 +274,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "5",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657015111280-ecba9e.png",
 //               "title": "Cut, file & polish(hands)",
-//               "price": "₹199",
+//               "price": "199",
 //               "time": "15 mins",
 //               "para": [
 //                 {
@@ -282,7 +287,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "6",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657525354775-6f2f1b.png",
 //               "title": "Elysian British rose mainicure",
-//               "price": "₹649",
+//               "price": "649",
 //               "time": "45 mins",
 //               "para": [
 //                 {
@@ -295,7 +300,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "7",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657018447765-ef2c1f.png",
 //               "title": "Cut, file & polish(feet)",
-//               "price": "₹199",
+//               "price": "199",
 //               "time": "15 mins",
 //               "para": [
 //                 {
@@ -308,7 +313,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "8",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657525354775-6f2f1b.png",
 //               "title": "Elysian British rose mainicure",
-//               "price": "₹849",
+//               "price": "849",
 //               "time": "1 hr 5 mins",
 //               "para": [
 //                 {
@@ -321,7 +326,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "9",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657523964352-5dd593.png",
 //               "title": "Face wax",
-//               "price": "Starts at ₹69",
+//               "price": "69",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -337,7 +342,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "10",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657524490060-23016c.png",
 //               "title": "Threading",
-//               "price": " Starts at ₹19",
+//               "price": "19",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -349,7 +354,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "11",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657523167667-d1f1eb.png",
 //               "title": "Detan",
-//               "price": "Starts at ₹349",
+//               "price": "349",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -361,7 +366,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "12",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657520810954-691bb1.png",
 //               "title": "Bleach",
-//               "price": "Starts at ₹299",
+//               "price": "299",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -377,7 +382,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "13",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657524726085-34bdda.png",
 //               "title": "Hair colour application",
-//               "price": "Starts at ₹249",
+//               "price": "249",
 //               "para": [
 //                 {
 //                   "id": "1",
@@ -393,7 +398,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //               "id": "14",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657524725157-0eea37.png",
 //               "title": "Head massage",
-//               "price": "₹299",
+//               "price": "299",
 //               "time": "20 mins",
 //               "para": [
 //                 {
@@ -410,7 +415,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 //   "cart": [
 //     {
 //       "title": "Full body",
-//       "price": "₹1399",
+//       "price": "1399",
 //       "para": [
 //         {
 //           "id": "1",
@@ -515,7 +520,7 @@ import { ScrollingExample } from "../Components/PopUpModel";
 
 const products = {
   id: 1,
-  "SalonForWomen": {
+  "salon_for_men": {
     head: "Salon Prime",
     video: "",
     categories: [
@@ -562,7 +567,8 @@ const products = {
       }
     ]
   },
-  "SalonForMen": {
+ id:2,
+  "salon_for_women": {
     head: "Salon Prime For Men",
     video: "link",
     categories: [
@@ -614,19 +620,19 @@ const products = {
 
     ],
     productList: [
-     
+
       {
         type: "guide"
         ,
-        title:"Best Seller",
+        title: "Best Seller",
         guide_Img: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
       },
-      
-   
+
+
       {
         "id": "1",
         "title": "Full chocolate | chocolate roll-on wacxing",
-        "price": "₹849",
+        "price": "849",
         "time": "1 hr 5 mins",
         "para": [
           {
@@ -646,7 +652,7 @@ const products = {
       {
         "id": "2",
         "title": "Glow getter",
-        "price": "₹1619",
+        "price": "1619",
         "time": "1 hr 25 mins",
         "para": [
           {
@@ -662,7 +668,7 @@ const products = {
       {
         "id": "3",
         "title": "Make your own package-roll on special",
-        "price": "₹1284",
+        "price": "1284",
         "time": "1 hr 50 mins",
         "para": [
           {
@@ -694,14 +700,14 @@ const products = {
       {
         type: "guide"
         ,
-        title:"Make your Packages",
+        title: "Make your Packages",
 
         guide_Img: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/partner-app-supply/1668503062279-01ca1a.jpeg"
       },
       {
         "id": "4",
         "title": "Make your own package",
-        "price": "₹1850",
+        "price": "1850",
         "time": "2 hr 50 mins",
         "para": [
           {
@@ -741,7 +747,7 @@ const products = {
       {
         "id": "5",
         "title": "Complete honey waxing",
-        "price": "₹399",
+        "price": "399",
         "time": "1 hr 10 mins",
         "para": [
           {
@@ -766,7 +772,7 @@ const products = {
         "id": "1",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100967218-f08380.png",
         "title": "Full body",
-        "price": "₹1399",
+        "price": "1399",
         "para": [
           {
             "id": "1",
@@ -782,7 +788,7 @@ const products = {
         "id": "2",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100955968-c5b3f1.png",
         "title": "Stomach",
-        "price": "₹299",
+        "price": "299",
         "para": [
           {
             "id": "1",
@@ -794,7 +800,7 @@ const products = {
         "id": "3",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100969960-ef6f74.png",
         "title": "Fruit cleanup",
-        "price": " Starts at ₹699",
+        "price": "699",
         "time": "2 hrs 20 mins",
         "para": [
           {
@@ -811,7 +817,7 @@ const products = {
         "id": "4",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1634707058605-fd6260.png",
         "title": "Glow Facial",
-        "price": " Starts at ₹1099",
+        "price": "1099",
         "para": [
           {
             "id": "1",
@@ -827,7 +833,7 @@ const products = {
         "id": "5",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657015111280-ecba9e.png",
         "title": "Cut, file & polish(hands)",
-        "price": "₹199",
+        "price": "199",
         "time": "15 mins",
         "para": [
           {
@@ -840,7 +846,7 @@ const products = {
         "id": "6",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657525354775-6f2f1b.png",
         "title": "Elysian British rose mainicure",
-        "price": "₹649",
+        "price": "649",
         "time": "45 mins",
         "para": [
           {
@@ -853,7 +859,7 @@ const products = {
         "id": "7",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657018447765-ef2c1f.png",
         "title": "Cut, file & polish(feet)",
-        "price": "₹199",
+        "price": "199",
         "time": "15 mins",
         "para": [
           {
@@ -866,7 +872,7 @@ const products = {
         "id": "8",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657525354775-6f2f1b.png",
         "title": "Elysian British rose mainicure",
-        "price": "₹849",
+        "price": "849",
         "time": "1 hr 5 mins",
         "para": [
           {
@@ -879,7 +885,7 @@ const products = {
         "id": "9",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657523964352-5dd593.png",
         "title": "Face wax",
-        "price": "Starts at ₹69",
+        "price": "69",
         "para": [
           {
             "id": "1",
@@ -895,7 +901,7 @@ const products = {
         "id": "10",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657524490060-23016c.png",
         "title": "Threading",
-        "price": " Starts at ₹19",
+        "price": "19",
         "para": [
           {
             "id": "1",
@@ -907,7 +913,7 @@ const products = {
         "id": "11",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657523167667-d1f1eb.png",
         "title": "Detan",
-        "price": "Starts at ₹349",
+        "price": "349",
         "para": [
           {
             "id": "1",
@@ -919,7 +925,7 @@ const products = {
         "id": "12",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657520810954-691bb1.png",
         "title": "Bleach",
-        "price": "Starts at ₹299",
+        "price": "299",
         "para": [
           {
             "id": "1",
@@ -935,7 +941,7 @@ const products = {
         "id": "13",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657524726085-34bdda.png",
         "title": "Hair colour application",
-        "price": "Starts at ₹249",
+        "price": "249",
         "para": [
           {
             "id": "1",
@@ -951,7 +957,7 @@ const products = {
         "id": "14",
         "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657524725157-0eea37.png",
         "title": "Head massage",
-        "price": "₹299",
+        "price": "299",
         "time": "20 mins",
         "para": [
           {
@@ -1016,14 +1022,43 @@ const products = {
 // }
 
 
-let currentPage = "SalonForMen"
+
+const youtubeLink = "UwI71cKFR6g"
 
 
 const Product = () => {
 
+  const {id}=useParams()
+
+let currentPage = id
 
 
+  // console.log(id)
+  const dispatch=useDispatch()
+  const cart=useSelector((store)=>store.CartReducer.cart)
+  const [totalCartValue,setTotalCartValue]=useState(0)
 
+  const CountCartValue=()=>{
+      let Sum=0
+    cart.forEach((el)=>{
+      Sum+=+el.price
+    })
+
+       setTotalCartValue(Sum)
+  }
+  console.log(totalCartValue)
+  useEffect(()=>{
+    
+    CountCartValue()
+ 
+
+
+  },[cart])
+
+  // console.log(cart)
+// const handleAddToCart=(payload)=>{
+//   dispatch(addCartData(payload))
+// }
 
 
 
@@ -1031,36 +1066,55 @@ const Product = () => {
 
   return <Box p="10" margin={"auto"} width={"85%"} >
 
-    <Box my={"10"} py={"10"}
+    
+    {/* Video Div */}
+    <Box flexDir={["column", "row"]} my={"10"} py={"10"}
       style={{
         width: "100%",
         // border: "1px solid red",
         display: "flex",
         justifyContent: "space-evenly",
-        flexWrap: "wrap"
+        // flexWrap: "wrap"
       }}>
+      <Box margin={"auto"} w={"full"} textAlign={"left"} >
+       
+          <PopUpForUSsafe/>
+        <Heading>{products[currentPage].head}</Heading>
+      </Box>
 
-      <Heading>{products[currentPage].head}</Heading>
+      {/* Front Video */}
+      <Box margin="auto" w={"full"}>
+        <Box width={"fit-content"} m="auto"  >
+          <iframe
+            loop="0"
 
-      <iframe
-        style={{ borderRadius: '10px' }}
-        title='naruto'
-        width={"350px"}
-        height="250px"
-        src="https://www.youtube.com/embed/UwI71cKFR6g"
+            style={{ borderRadius: '10px' }}
+            title='naruto'
+            width={"595px"}
+            height="335px"
+            controls="0"
+            modestbranding="1"
 
-      />
+            src={`https://www.youtube.com/embed/${youtubeLink}?playlist=${youtubeLink}&autoplay=1&mute=1&controls=0&modestbranding=1&autoplay=1&loop=1`}
+
+          />
+        </Box>
+
+      </Box>
+
     </Box>
 
+
+    <Box my={"10"} w={"100%"} bg="gray.200" h={"4px"}></Box>
     <Box position={"sticky"}
       top="0" zIndex="1"
     >
       <Flex
-        p="5"
+        p="4"
         margin={"auto"}
         display={"flex"}
         justifyContent="space-evenly"
-
+        // wrap={"wrap"}
 
         bg={"white"}
 
@@ -1068,18 +1122,16 @@ const Product = () => {
       >
         {products[currentPage].categories?.map((el, i) => <CategoryItems key={i} {...el} />)}
       </Flex >
-          
-          <Divider borderColor='gray.400' />
+
+      <Divider borderColor='gray.400' />
 
     </Box>
 
 
-    {/* Category Divider */}
-
-
-
-
-    <Box display={"flex"} >
+  
+      
+      {/* Listing All Products */}
+    <Box flexDirection={["column" , " ", "row"]} display={"flex"} >
       <Box>
         {
           // products[currentPage].productList.map((el, i) => <ProductItems key={i} {...el} />)
@@ -1094,43 +1146,52 @@ const Product = () => {
         <Divider orientation="vertical" borderColor='gray.400' />
       </Box>
 
-          
 
-      <Box className="Dh" width="60%" flexDirection={"row"} >
-        
-          <Box  className="offers"flexDirection={"column"}>
-         <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>
-        <Heading>Cart</Heading>   
-          <Box zIndex={1} bg={"white"}  position={"sticky"} top="0" justifyContent={"space-between"} display={"flex"}  >
-          <Box  >
-            <Heading>Price</Heading>
+
+      <Box className="offers"  width="60%" flexDirection={"column"} >
+
+        <VStack 
+        className="H"
+          overflow={"auto"}
+          p={5}
+        // className="offers" 
+        flexDirection={"column"}>
+          <Box>
+           <Heading>Offers</Heading>
           </Box>
           <Box>
-            <Button >View Cart</Button>
+           <Heading>Offers</Heading>
           </Box>
-        </Box>
+          <Box>
+           <Heading>Offers</Heading>
           </Box>
-       
-    
+          <Box>
+           <Heading>Offers</Heading>
+          </Box>
+         
+        
+         
+        </VStack>
+          <Box textAlign={"left"} zIndex={0} p="4" m="4" bg={"white"}
+                      position={"sticky"}
+                      bottom="0" 
+                      justifyContent={"space-between"}
+                      display={"flex"}  >
+                      <Box w={"full"} >
+                        <Heading>₹{totalCartValue}</Heading>
+                      </Box>
+                      <Box w={"full"}>
+                        <Button rounded={8} h={"50px"} width={"full"} color="white" bg={"rgb(111,67,229)"} >View Cart</Button>
+                      </Box>
+                    </Box>
+         
 
-    </Box>
+
+
       </Box>
+    </Box>
 
-  </Box>;
+  </Box >;
 };
 
 export default Product;

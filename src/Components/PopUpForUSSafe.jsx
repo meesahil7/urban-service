@@ -19,61 +19,20 @@ import {
     StackDivider,
   } from '@chakra-ui/react'
 import { ProductItems } from './ProductItems'
-import { useDispatch, useSelector } from 'react-redux'
-import { addCartData } from '../Redux/Cart/action'
 
-export function ScrollingExample(params) {
-  const cart=useSelector((store)=>store.CartReducer.cart)
-  const dispatch=useDispatch()
+export function PopUpForUSsafe(el) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
-    // console.log(el)
-
-    const handleAddToCart=()=>{
-      let Check=false
-      cart.forEach((el)=>{
-      // console.log(el.id,id)
-      if(el.id==params.id){
-        // console.log(el.id,id)
-        Check=true
-        return 
-      }
-    })
-
-    // console.log(Check)
-
-   if(Check){
-
-     alert("Product is already added")
-      return
-   }else{
-     let newCartData={
-    id:params.id,
-    title:params.title,
-    price:params.price,
-    time:params.time,
-    para:params.para,
-    img:params.img
-  }
-
-  dispatch(addCartData(newCartData))
-  alert("Product added successfully")
-   
-   }
-}
-
-
-
-
-
+  
     const btnRef = React.useRef(null)
     return (
       <>
         {
           <Box onClick={onOpen}>
-          
-             <ProductItems  {...params} />
-            <Divider borderColor='gray.400' />
+            
+            <Button my="4" background={"white"} w="8rem" border={"1px solid silver"} color={"black"}>US Safe</Button>
+             {/* <ProductItems  {...el} />
+            <Divider borderColor='gray.400' /> */}
           
         
         </Box>
@@ -98,16 +57,16 @@ export function ScrollingExample(params) {
             <ModalCloseButton />
             <ModalBody p="0.2" m="0" >
                 <Box>
-                    <img width={"100%"} src={params.img} alt="" />
-            <ModalHeader>{params.title}</ModalHeader>
-                <ProductItems  {...params} />
+                    <img width={"100%"} src={el.img} alt="" />
+            <ModalHeader>{el.title}</ModalHeader>
+                <ProductItems  {...el} />
                    
                    
                     
                 </Box>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={handleAddToCart}> Add </Button>
+              <Button onClick={onClose}>Close</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
