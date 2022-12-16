@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { useSelector } from "react-redux";
@@ -12,7 +12,9 @@ const Login = () => {
     setIsOpen((prevState) => !prevState);
   };
   const showOtp = useSelector((store) => store.AuthReducer.showOtp);
-  console.log(showOtp);
+  // console.log(showOtp);
+  const [pinInput, setPinInput] = useState("");
+  // console.log(pinInput);
 
   return (
     <>
@@ -25,7 +27,18 @@ const Login = () => {
         size={"360px"}
       >
         <h3 id="title">Please login to continue</h3>
-        {showOtp ? <Pin length={6} perInputBox={1} /> : <NumberInput />}
+        {/* <Pin length={6} perInputBox={1} setPin={setPinInput} /> */}
+        {/* <NumberInput otp={pinInput} /> */}
+        {showOtp ? (
+          <Pin
+            length={6}
+            perInputBox={1}
+            setPin={setPinInput}
+            toggleDrawer={toggleDrawer}
+          />
+        ) : (
+          <NumberInput />
+        )}
       </Drawer>
     </>
   );

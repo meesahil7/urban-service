@@ -1,24 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useRef } from "react";
 import PinInput from "./PinInput";
 import { useSelector } from "react-redux";
 import "./login.css";
+import Timer from "./Timer";
 
-const Pin = ({ length, perInputBox = 1, setPin }) => {
+const Pin = ({ length, perInputBox = 1, setPin, toggleDrawer }) => {
   const [inputBoxLength] = useState(new Array(length).fill(""));
   const inputRef = useRef([]);
   const [inputBoxValue] = useState(new Array(length).fill(""));
   const cell = useSelector((store) => store.AuthReducer.cell);
-  // console.log(cell);
+  const [showTimer, setShowTimer] = useState(true);
+  const [sec, setSec] = useState(30);
+
+  useEffect(() => {
+    let id = setTimeout(() => {
+      setSec((prev) => prev - 1);
+    }, 1000);
+    if (sec === 0) {
+      setShowTimer(false);
+      return clearTimeout(id);
+    }
+  }, [sec]);
 
   const handleChange = (e, index) => {
     inputBoxValue[index] = e.target.value;
-    console.log(inputBoxValue);
     if (e.target.value.length > 0 && index < length - 1) {
       inputRef.current[index + 1].focus();
     }
-    // setPin(inputBoxValue.join(""));
+    setPin(inputBoxValue.join(""));
   };
 
   const handleBackSpace = (e, index) => {
@@ -26,7 +37,7 @@ const Pin = ({ length, perInputBox = 1, setPin }) => {
       inputRef.current[index - 1].focus();
     }
     inputBoxValue[index] = e.target.value;
-    // setPin(inputBoxValue.join(""));
+    setPin(inputBoxValue.join(""));
   };
 
   const handlePaste = (e) => {
@@ -44,6 +55,27 @@ const Pin = ({ length, perInputBox = 1, setPin }) => {
     });
   };
 
+  const handleLogin = () => {
+    if (inputBoxValue.length === 6) {
+      const otp = inputBoxValue.join("");
+      let confirmationResult = window.confirmationResult;
+      confirmationResult
+        .confirm(otp)
+        .then((result) => {
+          // User signed in successfully.
+          const user = result.user.phoneNumber;
+          console.log(user);
+          toggleDrawer();
+          // ...
+        })
+        .catch((error) => {
+          // User couldn't sign in (bad verification code?)
+          // ...
+          console.log(error);
+        });
+    }
+  };
+  // console.log(sec);
   return (
     <div>
       <div>
@@ -71,9 +103,26 @@ const Pin = ({ length, perInputBox = 1, setPin }) => {
         })}
       </div>
       <div>
-        <button id="otp-btn">Resend OTP</button>
-        <br />
-        <button className="continue">Login</button>
+        <div>
+          {showTimer ? (
+            <p className="timer">00 : {sec}</p>
+          ) : (
+            <button id="otp-btn">Resend OTP</button>
+          )}
+        </div>
+        <div>
+          {inputBoxValue.join("").length === 6 ? (
+            <div>
+              <button className="continue" onClick={handleLogin}>
+                Login
+              </button>
+            </div>
+          ) : (
+            <button className="continue" id="disabled">
+              Login
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

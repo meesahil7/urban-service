@@ -5,9 +5,9 @@ import "react-phone-input-2/lib/style.css";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { authentication } from "./firebase";
 import { useDispatch } from "react-redux";
-import { SEND_OTP_SUCCESS } from "../../Redux/Auth/actionTypes";
+import { sendOtp } from "../../Redux/Auth/action";
 
-const NumberInput = () => {
+const NumberInput = ({ otp }) => {
   const [num, setNum] = useState("");
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const NumberInput = () => {
       signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
         .then((confirmationResult) => {
           window.confirmationResult = confirmationResult;
-          dispatch({ type: SEND_OTP_SUCCESS, payload: phoneNumber });
+          dispatch(sendOtp(phoneNumber));
         })
         .catch((e) => {
           console.log(e);
