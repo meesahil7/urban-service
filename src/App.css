@@ -9,6 +9,7 @@ html{
   height: calc(100vh - 164px); 
   /* display:flex; */
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
