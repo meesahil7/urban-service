@@ -1,7 +1,7 @@
 import React from "react";
-import LandingPage from "../LandingPage/LandingPage";
+import LandingPage from "../Components/LandingPage/LandingPage";
 import { Box } from "@chakra-ui/react";
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 const Home = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,9 +19,11 @@ const Home = () => {
   //   }
   //   setTimeout(() => setLoading(false), 1000);
   // }, [query]);
-  return <div>
-    <LandingPage/>
-  </div>;
+  return (
+    <div>
+      <LandingPage />
+    </div>
+  );
 };
 
 export default Home;
