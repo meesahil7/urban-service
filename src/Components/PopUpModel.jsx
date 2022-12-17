@@ -107,7 +107,8 @@ export function ScrollingExample(params) {
                 </Box>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={handleAddToCart}> Add </Button>
+            <Button onClick={handleAddToCart}rounded={8} h={"50px"} width={"50%"} color="white" bg={"rgb(111,67,229)"} >Add To Cart</Button>
+              {/* <Button onClick={handleAddToCart}> Add To Cart </Button> */}
             </ModalFooter>
           </ModalContent>
         </Modal>

@@ -99,7 +99,7 @@ export const ProductItems = ({id, title, price, time, para, type, guide_Img, img
   if (type == "guide") {
     // console.log(type)
     return (
-      <Box textAlign={"left"} >
+      <Box id={id} textAlign={"left"} >
         <Box my={"4"}>
 
         <Heading>{title}</Heading>
