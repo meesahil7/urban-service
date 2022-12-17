@@ -1,0 +1,14 @@
+.body {
+  width: 70%;
+  height: 1000px;
+  border: 1px solid red;
+  margin: auto;
+}
+
+.heading {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 20px 0px 20px 20px;
+  border-bottom: 0.5px solid rgb(223, 219, 219);
+}
