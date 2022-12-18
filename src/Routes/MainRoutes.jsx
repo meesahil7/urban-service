@@ -1,10 +1,8 @@
-
 import { Route, Routes } from "react-router";
 import Home from "./Home";
 import Product from "./Product";
 import Blog from "./Blog";
 import Cart from "./Cart";
-
 
 const MainRoutes = () => {
   return (
@@ -12,7 +10,7 @@ const MainRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/products/:id" element={<Product />} />
+        <Route path="/products" element={<Product />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/cart" element={<Cart />} />
 
@@ -22,6 +20,4 @@ const MainRoutes = () => {
   );
 };
 
-
 export default MainRoutes;
-

@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useRef } from "react";
 import PinInput from "./PinInput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./login.css";
-import Timer from "./Timer";
+import { loginSuccess } from "../../Redux/Auth/action";
 
 const Pin = ({ length, perInputBox = 1, setPin, toggleDrawer }) => {
   const [inputBoxLength] = useState(new Array(length).fill(""));
@@ -13,6 +13,7 @@ const Pin = ({ length, perInputBox = 1, setPin, toggleDrawer }) => {
   const cell = useSelector((store) => store.AuthReducer.cell);
   const [showTimer, setShowTimer] = useState(true);
   const [sec, setSec] = useState(30);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let id = setTimeout(() => {
@@ -65,6 +66,7 @@ const Pin = ({ length, perInputBox = 1, setPin, toggleDrawer }) => {
           // User signed in successfully.
           const user = result.user.phoneNumber;
           console.log(user);
+          dispatch(loginSuccess());
           toggleDrawer();
           // ...
         })

@@ -2,6 +2,9 @@ import React from "react";
 import LandingPage from "../Components/LandingPage/LandingPage";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import TopHeading from "../Components/TopHeading/TopHeading";
+import Navbar from "../Components/Navbar/Navbar";
+import Login from "../Components/Login/Login";
 const Home = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,6 +24,9 @@ const Home = () => {
   // }, [query]);
   return (
     <div>
+      <Navbar />
+      {/* <Login /> */}
+      {/* <TopHeading /> */}
       <LandingPage />
     </div>
   );

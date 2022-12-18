@@ -1,61 +1,73 @@
-import { ReactNode } from 'react';
-
+import { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import {
-    Box,
-    Flex,
-    Avatar,
-    HStack,
-    Link,
-    IconButton,
-    Button,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    MenuDivider,
-    useDisclosure,
-    useColorModeValue,
-    Stack,
-    Image,
-} from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import Logo from '../Navbar/Image/Logo.png'
-import TopHeading from '../TopHeading/TopHeading';
-const Links = ['Blog','Register As A Professional', 'Help Center', 'Login/Sign Up'];
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  Link,
+  IconButton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+  Image,
+} from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import Logo from "../Navbar/Image/Logo.png";
+import TopHeading from "../TopHeading/TopHeading";
+import Login from "../Login/Login";
+const Links = [
+  "Blog",
+  "Register As A Professional",
+  "Help Center",
+  "Login/Sign Up",
+];
 
-const NavLink = ({ children }={ children: ReactNode }) => (
-    <Link
-        px={2}
-        py={1}
-        rounded={'md'}
-        _hover={{
-            textDecoration: 'none',
-            bg: useColorModeValue('black.200', 'black.700'),
-        }}
-        href={'#'}>
-        {children}
-    </Link>
+const NavLink = ({ children } = { children: ReactNode }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={"md"}
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("black.200", "black.700"),
+    }}
+    href={"#"}
+  >
+    {children}
+  </Link>
 );
 
 export default function Navbar() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <Box bg={useColorModeValue('black.100', 'black.900')} px={4}>
-                <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                    <IconButton
-                        size={'md'}
-                        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                        aria-label={'Open Menu'}
-                        display={{ md: 'none' }}
-                        onClick={isOpen ? onClose : onOpen}
-                    />
-                    <HStack spacing={8} alignItems={'center'}>
-                        <Box w='120px' h='120px' >
-                           <Image w={'100%'} h={'100%'} src={Logo}/> 
-                        </Box>
-                        {/* <HStack
+  const blogClick = () => {
+    navigate("/blog");
+  };
+
+  return (
+    <>
+      <Box bg={useColorModeValue("black.100", "black.900")} px={4}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          <IconButton
+            size={"md"}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={"Open Menu"}
+            display={{ md: "none" }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+          <HStack spacing={8} alignItems={"center"}>
+            <Box w="120px" h="120px">
+              <Image w={"100%"} h={"100%"} src={Logo} />
+            </Box>
+            {/* <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
@@ -63,10 +75,10 @@ export default function Navbar() {
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </HStack> */}
-                    </HStack>
-                    <Flex alignItems={'center'}>
-                        <Menu>
-                            {/* <MenuButton
+          </HStack>
+          <Flex alignItems={"center"}>
+            <Menu>
+              {/* <MenuButton
                 as={Button}
                 rounded={'full'}
                 variant={'link'}
@@ -79,30 +91,40 @@ export default function Navbar() {
                   }
                 />
               </MenuButton> */}
-                            <HStack
-                                as={'nav'}
-                                spacing={4}
-                                display={{ base: 'none', md: 'flex' }}>
-                                {Links.map((link) => (
+              <HStack
+                as={"nav"}
+                spacing={4}
+                display={{ base: "none", md: "flex" }}
+              >
+                {/* {Links.map((link) => (
                                     <NavLink key={link}>{link}</NavLink>
-                                ))}
-                            </HStack>
-                          
-                        </Menu>
-                    </Flex>
-                </Flex>
+                                ))} */}
+                <NavLink>
+                  <button onClick={blogClick}>Blog</button>
+                </NavLink>
+                <NavLink>Register As A Professional</NavLink>
+                <NavLink>Help Center</NavLink>
+                <NavLink>
+                  <button>
+                    <Login />
+                  </button>
+                </NavLink>
+              </HStack>
+            </Menu>
+          </Flex>
+        </Flex>
 
-                {isOpen ? (
-                    <Box pb={4} display={{ md: 'none' }}>
-                        <Stack as={'nav'} spacing={4}>
-                            {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
-                            ))}
-                        </Stack>
-                    </Box>
-                ) : null}
-            </Box>
-<TopHeading/>
-        </>
-    );
+        {isOpen ? (
+          <Box pb={4} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={4}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
+      </Box>
+      <TopHeading />
+    </>
+  );
 }

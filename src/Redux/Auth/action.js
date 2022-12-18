@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, SEND_OTP_SUCCESS } from "./actionTypes";
+import { LOGIN_REQUEST, LOGIN_SUCCESS, SEND_OTP_SUCCESS } from "./actionTypes";
 
 export const sendOtp = (payload) => {
   return {
@@ -11,5 +11,11 @@ export const loginRequest = (payload) => {
   return {
     type: LOGIN_REQUEST,
     payload,
+  };
+};
+
+export const loginSuccess = () => {
+  return {
+    type: LOGIN_SUCCESS,
   };
 };

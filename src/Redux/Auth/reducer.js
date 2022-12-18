@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, SEND_OTP_SUCCESS } from "./actionTypes";
+import { LOGIN_REQUEST, LOGIN_SUCCESS, SEND_OTP_SUCCESS } from "./actionTypes";
 
 const initialState = {
   cell: "",
@@ -19,12 +19,13 @@ const reducer = (state = initialState, action) => {
       return {
         inputBoxVal: payload,
       };
+    case LOGIN_SUCCESS:
+      return {
+        isAuth: true,
+      };
     default:
       return state;
   }
 };
 
-
-
 export { reducer };
-
