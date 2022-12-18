@@ -1,7 +1,7 @@
 import { Avatar, Box, Flex , Text } from "@chakra-ui/react";
 import { useState } from "react";
 import "../Components/LandingPage/Style.css";
-import plusImage from "../Components/LandingPage/image/plus_in_number.png";
+import plusImage from "../Components/LandingPage/images/plus_in_number.png";
 const Order = ()=>{
     const [savings , setSaving] = useState(100);
     const [plan12 , setPlan12] = useState(false);
