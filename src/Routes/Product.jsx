@@ -1,29 +1,23 @@
-import { Box, Button, Divider, Flex, Heading, VStack } from "@chakra-ui/react";
-import React, { useState } from "react";
-import {useDispatch,useSelector}from "react-redux"
+import { Box, Button, Divider, Flex, Heading, Skeleton, SkeletonCircle, SkeletonText, VStack } from "@chakra-ui/react";
+import React, { memo, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { CategoryItems } from "../Components/CategoryItems";
 import { PopUpForUSsafe } from "../Components/PopUpForUSSafe";
 import { ScrollingExample } from "../Components/PopUpModel";
-import {Link, useParams, useSearchParams} from "react-router-dom"
-import { addCartData } from "../Redux/Cart/action";
-import { useEffect } from "react";
-import axios from "axios"
 
 
 
-// const youtubeLink = "UwI71cKFR6g"
+import { getProductData } from "../Redux/App/action";
+import { getCartData } from "../Redux/Cart/action";
 
 
 const Product = () => {
 
-  const [tempData,setTempData]=useState({})
-  
   const {id}=useParams()
-
-  // console.log(id)
-  
   const dispatch=useDispatch()
   const cart=useSelector((store)=>store.CartReducer.cart)
+  const ProductData=useSelector((store)=>store.AppReducer.ProductData)
   const [totalCartValue,setTotalCartValue]=useState(0)
 
   const CountCartValue=()=>{
@@ -36,68 +30,83 @@ const Product = () => {
   }
 
 
-  // console.log(totalCartValue)
+  useEffect(() => {
+    if(cart && cart.length > 0) {
+      CountCartValue();
+    }
+  }, [cart])
 
 
   useEffect(() =>{
 
-    axios
-    .get(`http://localhost:8080/${id}`)
-    .then((res)=>{
-        // console.log(res.data)
-        setTempData(res.data)
-    })
     CountCartValue()
+    dispatch(getCartData())
+    dispatch(getProductData(id))
  
-
-
-  },[cart])
-// console.log(tempData)
+  },[id])
 
 
 
-// console.log(tempData.head)
 
 
 
-  return <Box p="10" margin={"auto"} width={"85%"} >
+  return <Box p="10" 
+  
+  margin={"auto"}
+  
+  width={"85%"} >
 
       
-
     {/* Video Div */}
-    <Box flexDir={["column", "row"]} my={"10"} py={"10"}
+    <Box width={"100%"} flexDir={["column", "column","row","row"]} my={"10"} py={"10"}
       style={{
-        width: "100%",
+        // width: "100%",
         // border: "1px solid red",
         display: "flex",
         justifyContent: "space-evenly",
         // flexWrap: "wrap"
       }}>
-      <Box margin={"auto"} w={"full"} textAlign={"left"} >
+      <Box  border={"1px solid red"} margin={"auto"} p="5" w={"320px"} textAlign={"left"} >
        
+        {
+          !ProductData.head ? <Box width={"100%"}> <Skeleton rounded={10} w="30%" height={10} size='10' />
+          <SkeletonText mt='4' noOfLines={1} spacing='4' w={"70%"} skeletonHeight='10' />
+          </Box> : 
+          <Box width={"100%"}>
           <PopUpForUSsafe/>
-        <Heading>{tempData.head}</Heading>
+        <Heading>{ProductData.head}</Heading>
+            </Box>
+        }
+          
       </Box>
 
       {/* Front Video */}
-      <Box margin="auto" w={"full"}>
+      <Box  margin="auto" w={"100%"}>
+        {
+
+        ProductData.video?
         <Box width={"fit-content"} m="auto"  >
           <iframe
             loop="0"
 
             style={{ borderRadius: '10px' }}
             title='naruto'
-            width={"595px"}
-            height="335px"
+            width={["595px","300px"]}
+            height={["335px","180px"]}
             controls="0"
             modestbranding="1"
 
-            src={`https://www.youtube.com/embed/${tempData?.video}?playlist=${tempData?.video}&autoplay=1&mute=1&controls=0&modestbranding=1&autoplay=1&loop=1`}
+            src={`https://www.youtube.com/embed/${ProductData?.video}?playlist=${ProductData?.video}&autoplay=1&mute=1&controls=0&modestbranding=1&autoplay=1&loop=1`}
 
           />
         </Box>
-
+        :
+        <Box w={"100%"}>
+        <Skeleton rounded={10} w="595px" h={"335px"}  size='20' />
+          </Box>
+          }
       </Box>
+        
 
     </Box>
 
@@ -117,7 +126,15 @@ const Product = () => {
 
       // borderBottom={"0.1px solid gray"}
       >
-        {tempData?.categories?.map((el, i) =><CategoryItems key={i} {...el} /> )}
+       {!ProductData.categories&&<Skeleton display={"flex"} h="20" width="full"/>}
+         
+            
+        {ProductData?.categories?.map((el, i) =><CategoryItems key={i} {...el} /> )}
+      
+      
+
+      
+
       </Flex >
 
       <Divider borderColor='gray.400' />
@@ -128,11 +145,19 @@ const Product = () => {
   
       
       {/* Listing All Products */}
-    <Box  flexDirection={["column" , " ", "row"]} display={"flex"} >
-      <Box>
-        {
+    <Box  flexDirection={["column" ," ","row", "row"]} display={"flex"} >
+      <Box   w={"full"}>
+
+          {!ProductData.productList&&<Box marginTop={5}>
+            <SkeletonCircle  size='10' />
+            <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+            
+            </Box>}
+      
+        {   
+          
           // products[currentPage].productList.map((el, i) => <ProductItems key={i} {...el} />)
-          tempData?.productList?.map((el, i) => <ScrollingExample key={i} {...el} />)
+          ProductData?.productList?.map((el, i) => <ScrollingExample key={i} {...el} />)
         }
       </Box>
 
@@ -145,7 +170,12 @@ const Product = () => {
 
 
 
-      <Box className="offers"  width="60%" flexDirection={"column"} >
+      <Box className="offers" 
+      
+      // width="60%"
+      width={["100%" , "","60%",]}
+      pos={["relative","relative","sticky","sticky"]}
+      flexDirection={"column"} >
 
         <VStack 
 
@@ -195,7 +225,8 @@ const Product = () => {
         
          
         </VStack>
-          <Box textAlign={"left"} zIndex={0} p="4" m="4" bg={"white"}
+        {totalCartValue&&
+              <Box textAlign={"left"} zIndex={0} p="4" m="4" bg={"white"}
                       position={"sticky"}
                       bottom="0" 
                       justifyContent={"space-between"}
@@ -207,6 +238,8 @@ const Product = () => {
                         <Button rounded={8} h={"50px"} width={"full"} color="white" bg={"rgb(111,67,229)"} >View Cart</Button>
                       </Box>
                     </Box>
+        }
+    
          
 
 
@@ -217,7 +250,7 @@ const Product = () => {
   </Box >;
 };
 
-export default Product;
+export default memo( Product)
 
 
 
