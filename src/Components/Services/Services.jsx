@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Image, Text } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react'
 
 function Services() {
@@ -25,26 +25,31 @@ function Services() {
         },
       ];
   return (
-    <div  style={{width:"100%"}}>
-  <Box  w='100%' margin={'auto'} bg='white.100' boxShadow={'20px'} borderRadius='10px'>
-        <Grid templateColumns='repeat(5, 1fr)'   w='100%'  >
+    <div  style={{width:"50%",border:'2px solid red'}}>
+     
+  <Box  w='100%' margin="auto" bg='white.100' boxShadow={'20px'} borderRadius='10px' >
+        <SimpleGrid columns={{ base: 2, sm: 2, md: 4, lg: 5 }}
+  gap={'10px'}  w='100%'  >
         {  
 
             cardData.map((ele)=>{
                 return(
                    
-                    <GridItem w='55%' h='110px'  >
-                    <Image src={ele.logo}  w='50%' h={'40%'} />
-                    
-                    <Text fontSize='14px' textAlign={'left'} marginTop='10px'>{ele.service}</Text>
-                    </GridItem>
+                    <Box w='100%' h='150px' border={'2px solid red'} >
+                      <Box border={"2px solid red"} h='60%'   >
+                    <Image src={ele.logo}  w='70%' h={'80%'} m='auto'/>
+                    </Box>
+                    <Box border={"2px solid red"} h='40%' textAlign={'center'}>
+                    <Text noOfLines={[1,2,2]} fontSize='15px' as={'b'}  marginTop='10px'>{ele.service}</Text>
+                    </Box>
+                    </Box>
                     
                 )
             })
 
 
         }
-        </Grid>
+        </SimpleGrid>
         </Box>
     </div>
   )

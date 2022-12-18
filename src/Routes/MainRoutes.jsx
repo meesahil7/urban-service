@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Body_1 from "../Components/BodyPage/BodyPage";
+import TopHeading from "../Components/TopHeading/TopHeading";
 import Blog from "./Blog";
 import Cart from "./Cart";
 import Home from "./Home";
@@ -14,6 +16,7 @@ const MainRoutes = () => {
         <Route path="/cart/:id" element={<Cart />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
+        <Route path="/topheading" element={<TopHeading/>}></Route>
       </Routes>
     </div>
   );

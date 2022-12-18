@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
+import { Link } from "react-router-dom";
 
 import {
     Box,
     Flex,
     Avatar,
     HStack,
-    Link,
+   
     IconButton,
     Button,
     Menu,
@@ -52,9 +53,12 @@ export default function Navbar() {
                         onClick={isOpen ? onClose : onOpen}
                     />
                     <HStack spacing={8} alignItems={'center'}>
+                        <Link to={'/topheading'}>
+                        
                         <Box w='120px' h='120px' >
                            <Image w={'100%'} h={'100%'} src={Logo}/> 
                         </Box>
+                        </Link>
                         {/* <HStack
               as={'nav'}
               spacing={4}
@@ -102,7 +106,7 @@ export default function Navbar() {
                     </Box>
                 ) : null}
             </Box>
-<TopHeading/>
+{/* <TopHeading/> */}
         </>
     );
 }

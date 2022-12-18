@@ -48,6 +48,17 @@
     align-items: center;
     justify-content: center;
   }
+  @media only screen and (max-width: 800px) {
+    .homeTopBox {
+      background-image: none;
+      flex-direction: row;
+     
+    }
+    .search{
+      /* margin-top: -100px; */
+      
+    }
+}
   
   .popOverButton {
     border-radius: 5px 0 0 5px;
