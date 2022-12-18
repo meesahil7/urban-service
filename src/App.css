@@ -72,6 +72,10 @@ bottom: 0;
   position: absolute;
   top: 30%;
   left: 30%;
+  width: 40%;
+}
+#text>img{
+  width: 100%;
 }
 #top {
   width: 100%;
@@ -82,14 +86,17 @@ bottom: 0;
   position: absolute;
   left: 70%;
   top: 10%;
-  width: 400px;
+  width: 25%;
+  height: 3%;
 }
 #input > input {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
+  border: 0px;
+  height: 100%;
 }
 .scrollbox {
-  /* width: 410px; */
+ 
   height: 100%;
   overflow: scroll;
   background-color: bisque;
@@ -155,48 +162,90 @@ bottom: 0;
   display: block;
 }
 .homecare {
-  display: flex;
-  width: 80%;
+  display: grid;
+  width: 80%;  
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: auto;
   margin: auto;
-  justify-content: space-between;
+  gap:5%;
 }
-.homecare > div {
-  width: 48%;
-}
+
 .homecare > div > p:nth-child(even) {
   color: blueviolet;
 }
 .homecare > div > img {
   width: 100%;
-  height: 55%;
+  height: 60%;
 }
 .combo {
   width: 80%;
-  display: flex;
-  margin: 100px auto;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: 350px;
+  margin:15% auto;
+  gap: 5%;
 }
-.combo > div {
-  width: 48%;
-  height: 350px;
-}
+
 #hr {
   background-color: blueviolet;
   border: 2px solid blueviolet;
 }
 #footer {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
   width: 80%;
-  justify-content: space-around;
+  gap: 3%;
   margin: 4% auto;
 }
-#footer > div {
-  width: 20%;
-}
+
 #footer > div > img {
   width: 100%;
 }
 #p {
   color: blueviolet;
   text-align: center;
+}
+@media (min-width: 150px) and (max-width: 780px) {
+  #top{
+    height: 250px;
+    width: 100%;
+  }
+  #beauty {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 300px;
+    margin: auto;
+  }
+  .scrollbox {
+    margin-top: 20%;
+    height: 250px;
+    overflow: scroll;
+    background-color: bisque;
+    padding: 5px;
+    text-align: left;
+  }
+  .homecare {
+    display: grid;
+    width: 80%;  
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: auto;  
+    margin:20% auto;
+ 
+    gap:10%;
+  }
+  .combo {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: 350px;
+    margin:15% auto;
+    gap: 5%;
+  }
+  #footer {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 80%;
+    gap: 3%;
+    margin: 4% auto;
+  }
 }
