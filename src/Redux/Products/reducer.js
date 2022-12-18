@@ -16,9 +16,10 @@ const initState={
 
 const reducer = (state=initState,action) => {
   switch(action.type){
-    
-    case GET_PRODUCT_DATA:
+    case "PRODUCT_SUCCESS":
       return {...state,isLoading:false,isError:false,tempData:action.payload}
+    case "PRODUCT_REQ":
+      return {...state,isLoading:true,isError:false}
     default : 
     return state
 
