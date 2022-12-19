@@ -19,7 +19,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import Logo from "../Navbar/Image/Logo.png";
+import Logo from "./Image/Logo.png";
 import TopHeading from "../TopHeading/TopHeading";
 import Login from "../Login/Login";
 const Links = [

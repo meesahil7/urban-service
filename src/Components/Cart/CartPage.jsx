@@ -1,14 +1,22 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartData } from "../../Redux/Cart/action";
 import "./cartPage.css";
+import Payment from "./Payment";
 
 const CartPage = () => {
   const cart = useSelector((store) => store.CartReducer.cart);
   // console.log(cart);
+  const dispatch = useDispatch();
+  console.log(cart);
   const totalPrice = cart.reduce((ac, cv) => {
     return Number(ac.price) + Number(cv.price);
   });
   // console.log(totalPrice);
+  const totalBill = totalPrice + 158;
+  // useEffect(() => {
+  //   dispatch(getCartData());
+  // }, []);
 
   return (
     <div className="body">
@@ -23,7 +31,7 @@ const CartPage = () => {
           </div>
           <div style={{ marginTop: "34px" }}>
             {cart &&
-              cart.map((item) => {
+              cart?.map((item) => {
                 return (
                   <div key={item.id} style={{ marginBottom: "30px" }}>
                     <div className="title1">
@@ -117,9 +125,14 @@ const CartPage = () => {
               style={{ fontWeight: "bold", marginBottom: "15px" }}
             >
               <h2>Total</h2>
-              <p>₹{totalPrice + 158}</p>
+              <p>₹{totalBill}</p>
             </div>
             <div className="yay">Yay! You saved ₹899 on final bill</div>
+          </div>
+          <div>
+            <button className="pay-btn">
+              <Payment price={totalBill} />
+            </button>
           </div>
         </div>
       </div>

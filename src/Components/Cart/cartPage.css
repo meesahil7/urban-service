@@ -88,6 +88,7 @@
 
 .right-container {
   margin-left: 80px;
+  position: sticky;
 }
 
 .title2 {
@@ -119,4 +120,12 @@
   color: teal;
   font-size: 14px;
   padding-top: 5px;
+}
+
+.pay-btn {
+  padding: 15px 153px;
+  background-color: #6e42e5;
+  margin-top: 20px;
+  color: white;
+  border-radius: 5px;
 }
