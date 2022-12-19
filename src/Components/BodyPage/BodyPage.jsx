@@ -1,4 +1,5 @@
 import {
+<<<<<<< HEAD
   Box,
   HStack,
   Image,
@@ -36,6 +37,48 @@ const Body_1 = () => {
           <Image w={"45%"} src={woman} />
         </Box>
         <Box>
+=======
+    Box,
+    HStack,
+    Image,
+    Select,
+    Stack,
+    Text,
+    Textarea,
+    VStack,
+  } from "@chakra-ui/react";
+  import React, { useState } from "react";
+  import woman from "../Navbar/Image/Banner.png";
+  import { Cities } from "./Cities";
+  import { Link, useNavigate } from "react-router-dom";
+  import './BodyPage.css'
+  import Im from '../Navbar/Image/mid.png'
+  import mobile from '../Navbar/Image/mobile.png'
+import Navbar from "../Navbar/Navbar";
+  const Body_1 = () => {
+    console.log(Cities);
+  
+    const [city, setCity] = useState("");
+    const navigate = useNavigate();
+    
+  
+    const handleChange = (value) => {
+      setCity(value);
+      localStorage.setItem("location", value);
+      navigate(`/${value}`);
+    };
+  
+    return (
+      <div>
+        {/* <Navbar /> */}
+        <Box className="hero" pos={"relative"}>
+          <Box>
+
+
+          <Image w={"45%"} src={woman} />
+          </Box>
+         <Box>
+>>>>>>> origin/fp03_310_day-5
           <Box
             width={"100%"}
             height={"100%"}
@@ -48,7 +91,11 @@ const Body_1 = () => {
           >
             {/* <Text border={"1px solid yellow"}>Sample Text</Text> */}
             <Box
+<<<<<<< HEAD
               className="box2"
+=======
+            className="box2"
+>>>>>>> origin/fp03_310_day-5
               // border={"1px solid blue"}
               width={"44%"}
               marginLeft={"55%"}
@@ -60,7 +107,11 @@ const Body_1 = () => {
                   Quality home services, on demand
                 </Text>
                 <br />
+<<<<<<< HEAD
                 <Text className="exp" w={"24rem"} textAlign={"left"}>
+=======
+                <Text className="exp" w={"24rem"} textAlign={"left"} >
+>>>>>>> origin/fp03_310_day-5
                   Experienced, hand-picked Professionals to serve you at your
                   doorstep
                 </Text>
@@ -68,6 +119,7 @@ const Body_1 = () => {
                 <Box
                   bg={"whiteAlpha.900"}
                   borderRadius={"8"}
+<<<<<<< HEAD
                   w="400px"
                   padding={"3"}
                   color={"blackAlpha.900"}
@@ -76,6 +128,16 @@ const Body_1 = () => {
                   <Text>Where do you need a service?</Text>
                   <Select
                     textAlign={"center"}
+=======
+                  w='400px'
+                  padding={"3"}
+                  color={"blackAlpha.900"}
+                  textAlign='left'
+                >
+                  <Text>Where do you need a service?</Text>
+                  <Select
+                  textAlign={'center'}
+>>>>>>> origin/fp03_310_day-5
                     cursor={"pointer"}
                     placeholder="Select City"
                     value={city}
@@ -103,6 +165,7 @@ const Body_1 = () => {
               </Box>
             </Box>
           </Box>
+<<<<<<< HEAD
         </Box>
       </Box>
 
@@ -117,3 +180,19 @@ const Body_1 = () => {
 };
 
 export default Body_1;
+=======
+          </Box>
+        </Box>
+
+       <Stack>
+   <Image  src={Im}/>
+       </Stack>
+    <Stack>
+        <Image src={mobile}/>
+    </Stack>
+      </div>
+    );
+  };
+  
+  export default Body_1;
+>>>>>>> origin/fp03_310_day-5

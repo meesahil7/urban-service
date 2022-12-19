@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .text {
   color: white;
 
@@ -59,6 +60,16 @@
     background-image: linear-gradient(
       to top,
 
+=======
+
+  
+  .text {
+    color: white;
+  
+    background-image: linear-gradient(
+      to left,
+  
+>>>>>>> origin/fp03_310_day-5
       rgba(0, 0, 0, 1),
       rgba(0, 0, 0, 1),
       rgba(0, 0, 0, 1),
@@ -78,6 +89,7 @@
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0)
     );
+<<<<<<< HEAD
     width: 100%;
     height: 100%;
     border: 2px solid yellow;
@@ -89,9 +101,80 @@
   }
 
   .heading {
+=======
+  }
+  
+  .heading {
+    font-family: "Abel", sans-serif;
+>>>>>>> origin/fp03_310_day-5
     color: rgb(181, 177, 177);
     width: 30rem;
     font-size: xx-large;
     letter-spacing: 0.4em;
   }
+<<<<<<< HEAD
+=======
+  
+  .subHeading {
+    /* border: 1px solid red; */
+    width: 25rem;
+  
+    font-family: "Rubik", sans-serif;
+  
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  
+  .exp {
+    font-weight: lighter;
+    font-size: 1rem;
+    /* padding: 20px; */
+  
+    /* border: 1px solid red; */
+  }
+
+  @media only screen and (max-width: 996px) {
+    .text {
+        border: 2px solid red;
+        color: white;
+  
+        background-image: linear-gradient(
+          to top,
+      
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0)
+        );
+        width:100%;
+        height:100%;
+         border:2px solid yellow;
+        
+        font-weight:bold;
+        position: absolute;
+        right:2rem;
+        top:0.5
+    }
+
+    .heading {
+      color: rgb(181, 177, 177);
+      width: 30rem;
+      font-size: xx-large;
+      letter-spacing: 0.4em;
+    }
+>>>>>>> origin/fp03_310_day-5
 }
