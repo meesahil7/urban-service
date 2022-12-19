@@ -1,245 +1,28 @@
-// import { Box, Button, Divider, Flex, Heading, VStack } from "@chakra-ui/react";
-// import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { CategoryItems } from "../Components/CategoryItems";
-// import useTimeout from "../Components/DelayLoading";
-// import { PopUpForUSsafe } from "../Components/PopUpForUSSafe";
-// import { ScrollingExample } from "../Components/PopUpModel";
-// import { Link, useParams, useSearchParams } from "react-router-dom";
-// import { addCartData } from "../Redux/Cart/action";
-// import { useEffect } from "react";
-// import axios from "axios";
-// import { getCartRequest } from "../Redux/App/action";
-
-// import { getProductData } from "../Redux/App/action";
-// import { getCartData } from "../Redux/Cart/action";
-
-// const Product = () => {
-//   const [tempData, setTempData] = useState({});
-
-//   const { id } = useParams();
-
-//   // console.log(id)
-
-//   const dispatch = useDispatch();
-//   const cart = useSelector((store) => store.CartReducer.cart);
-//   console.log(cart);
-//   const [totalCartValue, setTotalCartValue] = useState(0);
-
-//   const CountCartValue = () => {
-//     let Sum = 0;
-//     cart.forEach((el) => {
-//       Sum += +el.price;
-//     });
-
-//     setTotalCartValue(Sum);
-//   };
-
-//   useEffect(() => {
-//     if (cart && cart.length > 0) {
-//       CountCartValue();
-//     }
-//   }, [cart]);
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:8080/${id}`).then((res) => {
-//       // console.log(res.data)
-//       setTempData(res.data);
-//     });
-//     CountCartValue();
-//   }, [cart]);
-//   // console.log(tempData)
-
-//   // console.log(tempData.head)
-
-//   return (
-//     <Box p="10" margin={"auto"} width={"85%"}>
-//       {/* Video Div */}
-//       <Box
-//         flexDir={["column", "row"]}
-//         my={"10"}
-//         py={"10"}
-//         style={{
-//           width: "100%",
-//           // border: "1px solid red",
-//           display: "flex",
-//           justifyContent: "space-evenly",
-//           // flexWrap: "wrap"
-//         }}
-//       >
-//         <Box margin={"auto"} w={"full"} textAlign={"left"}>
-//           <PopUpForUSsafe />
-//           <Heading>{tempData.head}</Heading>
-//         </Box>
-
-//         {/* Front Video */}
-//         <Box margin="auto" w={"full"}>
-//           <Box width={"fit-content"} m="auto">
-//             <iframe
-//               loop="0"
-//               style={{ borderRadius: "10px" }}
-//               title="naruto"
-//               width={"595px"}
-//               height="335px"
-//               controls="0"
-//               modestbranding="1"
-//               src={`https://www.youtube.com/embed/${tempData?.video}?playlist=${tempData?.video}&autoplay=1&mute=1&controls=0&modestbranding=1&autoplay=1&loop=1`}
-//             />
-//           </Box>
-//         </Box>
-//       </Box>
-
-//       {/* Navbar */}
-//       <Box my={"10"} w={"100%"} bg="gray.200" h={"4px"}></Box>
-//       <Box position={"sticky"} top="0" zIndex="1">
-//         <Flex
-//           p="4"
-//           margin={"auto"}
-//           display={"flex"}
-//           justifyContent="space-evenly"
-//           // wrap={"wrap"}
-
-//           bg={"white"}
-
-//           // borderBottom={"0.1px solid gray"}
-//         >
-//           {tempData?.categories?.map((el, i) => (
-//             <CategoryItems key={i} {...el} />
-//           ))}
-//         </Flex>
-
-//         <Divider borderColor="gray.400" />
-//       </Box>
-
-//       {/* Listing All Products */}
-//       <Box flexDirection={["column", " ", "row"]} display={"flex"}>
-//         <Box>
-//           {
-//             // products[currentPage].productList.map((el, i) => <ProductItems key={i} {...el} />)
-//             tempData?.productList?.map((el, i) => (
-//               <ScrollingExample key={i} {...el} />
-//             ))
-//           }
-//         </Box>
-
-//         {/* Product and Offer Divider */}
-
-//         <Box mx={"60px"}>
-//           <Divider orientation="vertical" borderColor="gray.400" />
-//         </Box>
-
-//         <Box className="offers" width="60%" flexDirection={"column"}>
-//           <VStack
-//             className="H"
-//             overflow={"auto"}
-//             p={10}
-//             // className="offers"
-//             flexDirection={"column"}
-//           >
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>Save 15% on every order </Heading>
-//               <p>GET Plus Now</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>Assured cashback on Paytm </Heading>
-//               <p>Upto 500 off</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>Mobikwik | Zip (Pay Later) </Heading>
-//               <p>Get 5% assured cashback</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>5% Simple cashback up to 750</Heading>
-//               <p>Get upto 750 cashback</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>15% off on Kotak cards</Heading>
-//               <p>15% off upto INR250</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>Upto 200 cashback</Heading>
-//               <p>on Amazon Pay</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>Assured cashback on Paytm </Heading>
-//               <p>Upto 500 off</p>
-//             </Box>
-
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}>Assured cashback on Paytm </Heading>
-//               <p>Upto 500 off</p>
-//             </Box>
-//             <Box width={"full"} p="2" rounded={5} bg={"gray.400"}>
-//               <Heading size={"sm"}> </Heading>
-//               <p>Upto 500 off</p>
-//             </Box>
-//           </VStack>
-//           <Box
-//             textAlign={"left"}
-//             zIndex={0}
-//             p="4"
-//             m="4"
-//             bg={"white"}
-//             position={"sticky"}
-//             bottom="0"
-//             justifyContent={"space-between"}
-//             display={"flex"}
-//           >
-//             <Box w={"full"}>
-//               <Heading>₹{totalCartValue}</Heading>
-//             </Box>
-//             <Box w={"full"}>
-//               <Link to="/cart">
-//                 <Button
-//                   rounded={8}
-//                   h={"50px"}
-//                   width={"full"}
-//                   color="white"
-//                   bg={"rgb(111,67,229)"}
-//                 >
-//                   View Cart
-//                 </Button>
-//               </Link>
-//             </Box>
-//           </Box>
-//         </Box>
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default Product;
-
-//----------------------------------------------------------------------------------------------
-
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Heading,
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-  VStack,
-} from "@chakra-ui/react";
-import React, { memo, useEffect, useState } from "react";
+import { Box, Button, Divider, Flex, Heading, VStack } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
 import { CategoryItems } from "../Components/CategoryItems";
 import { PopUpForUSsafe } from "../Components/PopUpForUSSafe";
 import { ScrollingExample } from "../Components/PopUpModel";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import { addCartData } from "../Redux/Cart/action";
+import { useEffect } from "react";
+import axios from "axios";
+import { getCartRequest } from "../Redux/App/action";
 
 // const youtubeLink = "UwI71cKFR6g"
 
 const Product = () => {
-  const Ready = useTimeout(1500);
+  const [tempData, setTempData] = useState({});
+
   const { id } = useParams();
+
+  // console.log(id)
+
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.CartReducer.cart);
-  const ProductData = useSelector((store) => store.AppReducer.ProductData);
+  console.log(cart);
   const [totalCartValue, setTotalCartValue] = useState(0);
-  const navigate = useNavigate();
 
   const CountCartValue = () => {
     let Sum = 0;
@@ -253,71 +36,50 @@ const Product = () => {
   // console.log(totalCartValue)
 
   useEffect(() => {
+    axios.get(`https://urban-server-new.onrender.com/${id}`).then((res) => {
+      // console.log(res.data)
+      setTempData(res.data);
+    });
     CountCartValue();
-    dispatch(getCartData());
-    dispatch(getProductData(id));
-  }, [id]);
+  }, [cart]);
+  // console.log(tempData)
 
-  const cartClick = () => {
-    navigate("/cart");
-  };
+  // console.log(tempData.head)
 
   return (
     <Box p="10" margin={"auto"} width={"85%"}>
       {/* Video Div */}
       <Box
-        flexDir={["column", "column", "row", "row"]}
+        flexDir={["column", "row"]}
         my={"10"}
         py={"10"}
         style={{
-          // width: "100%",
+          width: "100%",
           // border: "1px solid red",
           display: "flex",
           justifyContent: "space-evenly",
           // flexWrap: "wrap"
         }}
       >
-        <Box margin={"auto"} p="5" w={"100%"} textAlign={"left"}>
-          {Ready && ProductData.head ? (
-            <Box width={"100%"}>
-              <PopUpForUSsafe />
-              <Heading>{ProductData.head}</Heading>
-            </Box>
-          ) : (
-            <Box width={"100%"}>
-              {" "}
-              <Skeleton rounded={10} w="30%" height={10} size="10" />
-              <SkeletonText
-                mt="4"
-                noOfLines={1}
-                spacing="4"
-                w={"70%"}
-                skeletonHeight="20"
-              />
-            </Box>
-          )}
+        <Box margin={"auto"} w={"full"} textAlign={"left"}>
+          <PopUpForUSsafe />
+          <Heading>{tempData.head}</Heading>
         </Box>
 
         {/* Front Video */}
-        <Box margin="auto" w={"100%"}>
-          {Ready && ProductData.video ? (
-            <Box width={"fit-content"} m="auto">
-              <iframe
-                loop="0"
-                style={{ borderRadius: "10px" }}
-                title="naruto"
-                width={["595px", "300px"]}
-                height={["335px", "180px"]}
-                controls="0"
-                modestbranding="1"
-                src={`https://www.youtube.com/embed/${ProductData?.video}?playlist=${ProductData?.video}&autoplay=1&mute=1&controls=0&modestbranding=1&autoplay=1&loop=1`}
-              />
-            </Box>
-          ) : (
-            <Box w={"100%"}>
-              <Skeleton rounded={10} w="595px" h={"335px"} size="20" />
-            </Box>
-          )}
+        <Box margin="auto" w={"full"}>
+          <Box width={"fit-content"} m="auto">
+            <iframe
+              loop="0"
+              style={{ borderRadius: "10px" }}
+              title="naruto"
+              width={"595px"}
+              height="335px"
+              controls="0"
+              modestbranding="1"
+              src={`https://www.youtube.com/embed/${tempData?.video}?playlist=${tempData?.video}&autoplay=1&mute=1&controls=0&modestbranding=1&autoplay=1&loop=1`}
+            />
+          </Box>
         </Box>
       </Box>
 
@@ -335,35 +97,20 @@ const Product = () => {
 
           // borderBottom={"0.1px solid gray"}
         >
-          {/* {!ProductData.categories&&<Skeleton display={"flex"} h="20" width="full"/>} */}
-
-          {Ready &&
-            ProductData?.categories?.map((el, i) => (
-              <CategoryItems key={i} {...el} />
-            ))}
+          {tempData?.categories?.map((el, i) => (
+            <CategoryItems key={i} {...el} />
+          ))}
         </Flex>
 
         <Divider borderColor="gray.400" />
       </Box>
 
       {/* Listing All Products */}
-      <Box flexDirection={["column", " ", "row", "row"]} display={"flex"}>
-        <Box w={"full"}>
-          {!Ready && (
-            <Box marginTop={5}>
-              <SkeletonCircle size="10" />
-              <SkeletonText
-                mt="4"
-                noOfLines={4}
-                spacing="4"
-                skeletonHeight="2"
-              />
-            </Box>
-          )}
-
+      <Box flexDirection={["column", " ", "row"]} display={"flex"}>
+        <Box>
           {
             // products[currentPage].productList.map((el, i) => <ProductItems key={i} {...el} />)
-            ProductData?.productList?.map((el, i) => (
+            tempData?.productList?.map((el, i) => (
               <ScrollingExample key={i} {...el} />
             ))
           }
@@ -375,13 +122,7 @@ const Product = () => {
           <Divider orientation="vertical" borderColor="gray.400" />
         </Box>
 
-        <Box
-          className="offers"
-          // width="60%"
-          width={["100%", "", "60%"]}
-          pos={["relative", "relative", "sticky", "sticky"]}
-          flexDirection={"column"}
-        >
+        <Box className="offers" width="60%" flexDirection={"column"}>
           <VStack
             className="H"
             overflow={"auto"}
@@ -427,41 +168,38 @@ const Product = () => {
               <p>Upto 500 off</p>
             </Box>
           </VStack>
-          {totalCartValue && (
-            <Box
-              textAlign={"left"}
-              zIndex={0}
-              p="4"
-              m="4"
-              bg={"white"}
-              position={"sticky"}
-              bottom="0"
-              justifyContent={"space-between"}
-              display={"flex"}
-            >
-              <Box w={"full"}>
-                <Heading>₹{totalCartValue}</Heading>
-              </Box>
-              <Box w={"full"}>
-                {/* <Link to="/cart"> */}
+          <Box
+            textAlign={"left"}
+            zIndex={0}
+            p="4"
+            m="4"
+            bg={"white"}
+            position={"sticky"}
+            bottom="0"
+            justifyContent={"space-between"}
+            display={"flex"}
+          >
+            <Box w={"full"}>
+              <Heading>₹{totalCartValue}</Heading>
+            </Box>
+            <Box w={"full"}>
+              <Link to="/cart">
                 <Button
                   rounded={8}
                   h={"50px"}
                   width={"full"}
                   color="white"
                   bg={"rgb(111,67,229)"}
-                  onClick={cartClick}
                 >
                   View Cart
                 </Button>
-                {/* </Link> */}
-              </Box>
+              </Link>
             </Box>
-          )}
+          </Box>
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default memo(Product);
+export default Product;

@@ -4,11 +4,26 @@ import logo from "./logo.png";
 // import SuccessAlert from "./SuccessAlert";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Payment({ price, label }) {
   const Razorpay = useRazorpay();
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+  const [totalCartValue, setTotalCartValue] = useState(0);
+  const cart = useSelector((store) => store.CartReducer.cart);
+
+  const CountCartValue = () => {
+    let Sum = 0;
+    cart.forEach((el) => {
+      Sum += +el.price;
+    });
+    console.log(cart);
+    setTotalCartValue(Sum);
+  };
+  useEffect(() => {
+    CountCartValue();
+  }, [cart]);
 
   // useEffect(() => {
   //   // setTimeout(() => {
@@ -17,6 +32,7 @@ export default function Payment({ price, label }) {
 
   //   console.log("somehting");
   // }, []);
+  console.log("price", price);
 
   const handlePayment = useCallback(async () => {
     const order = {
@@ -27,7 +43,7 @@ export default function Payment({ price, label }) {
 
     const options = {
       key: "rzp_test_qho4K1vu3eyRqY",
-      amount: price * 100,
+      amount: price * 100 || 100,
       currency: "INR",
       name: "Urban Service",
       description: "Test Transaction",

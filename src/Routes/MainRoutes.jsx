@@ -3,6 +3,7 @@ import Home from "./Home";
 import Product from "./Product";
 import Blog from "./Blog";
 import Cart from "./Cart";
+import TopHeading from "../Components/TopHeading/TopHeading";
 
 const MainRoutes = () => {
   return (
@@ -15,7 +16,7 @@ const MainRoutes = () => {
         <Route path="/cart" element={<Cart />} />
 
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
-        <Route path="/topheading" element={<TopHeading/>}></Route>
+        <Route path="/topheading" element={<TopHeading />}></Route>
       </Routes>
     </div>
   );

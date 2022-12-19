@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {
   Box,
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -13,21 +13,22 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
+  Link,
   useDisclosure,
   useColorModeValue,
   Stack,
   Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import Logo from "./Image/Logo.png";
 import TopHeading from "../TopHeading/TopHeading";
 import Login from "../Login/Login";
-const Links = [
-  "Blog",
-  "Register As A Professional",
-  "Help Center",
-  "Login/Sign Up",
-];
+import logo from "../Cart/logo.png";
+// const Links = [
+//   "Blog",
+//   "Register As A Professional",
+//   "Help Center",
+//   "Login/Sign Up",
+// ];
 
 const NavLink = ({ children } = { children: ReactNode }) => (
   <Link
@@ -38,7 +39,7 @@ const NavLink = ({ children } = { children: ReactNode }) => (
       textDecoration: "none",
       bg: useColorModeValue("black.200", "black.700"),
     }}
-    href={"#"}
+    // href={"#"}
   >
     {children}
   </Link>
@@ -49,6 +50,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const blogClick = () => {
+    console.log("sahil");
     navigate("/blog");
   };
 
@@ -65,7 +67,9 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box w="120px" h="120px">
-              <Image w={"100%"} h={"100%"} src={Logo} />
+              <Link to="/topheading">
+                <Image w={"100%"} h={"100%"} src={logo} />
+              </Link>
             </Box>
             {/* <HStack
               as={'nav'}
@@ -117,14 +121,17 @@ export default function Navbar() {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              <button onClick={blogClick}>Blog</button>
+              <button>Register As A Professional</button>
+              <button>Help Center</button>
+              <button>
+                <Login />
+              </button>
             </Stack>
           </Box>
         ) : null}
       </Box>
-      <TopHeading />
+      {/* <TopHeading /> */}
     </>
   );
 }

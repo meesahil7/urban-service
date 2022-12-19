@@ -12,7 +12,7 @@ const getProductSuccess = (payload) => {
 const getProductData = (params) => (dispatch) => {
   dispatch(getProductReq());
 
-  axios.get(`http://localhost:8080/${params}`).then((res) => {
+  axios.get(`https://urban-server-new.onrender.com/${params}`).then((res) => {
     // console.log(res.data)
     // setTempData(res.data)
     dispatch(getProductSuccess(res.data));

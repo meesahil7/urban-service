@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartData } from "../../Redux/Cart/action";
 import "./cartPage.css";
@@ -9,14 +9,29 @@ const CartPage = () => {
   // console.log(cart);
   const dispatch = useDispatch();
   console.log(cart);
-  const totalPrice = cart.reduce((ac, cv) => {
-    return Number(ac.price) + Number(cv.price);
-  });
-  // console.log(totalPrice);
-  const totalBill = totalPrice + 158;
+
+  // const totalCartValue = cart.reduce((ac, cv) => {
+  // return Number(ac.price) + Number(cv.price);
+  // });
+  // console.log(totalCartValue);
+  // const totalBill = totalCartValue + 158;
   // useEffect(() => {
   //   dispatch(getCartData());
   // }, []);
+
+  const [totalCartValue, setTotalCartValue] = useState(0);
+
+  const CountCartValue = () => {
+    let Sum = 0;
+    cart.forEach((el) => {
+      Sum += +el.price;
+    });
+    console.log(cart);
+    setTotalCartValue(Sum);
+  };
+  useEffect(() => {
+    CountCartValue();
+  }, [cart]);
 
   return (
     <div className="body">
@@ -95,7 +110,7 @@ const CartPage = () => {
           <div>
             <div className="same">
               <p>Item total</p>
-              <p>₹{totalPrice}</p>
+              <p>₹{totalCartValue}</p>
             </div>
             <div className="same">
               <p>Item discount</p>
@@ -125,13 +140,13 @@ const CartPage = () => {
               style={{ fontWeight: "bold", marginBottom: "15px" }}
             >
               <h2>Total</h2>
-              <p>₹{totalBill}</p>
+              <p>₹{totalCartValue}</p>
             </div>
             <div className="yay">Yay! You saved ₹899 on final bill</div>
           </div>
           <div>
             <button className="pay-btn">
-              <Payment price={totalBill} />
+              <Payment price={totalCartValue} />
             </button>
           </div>
         </div>

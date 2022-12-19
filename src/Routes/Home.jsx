@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import TopHeading from "../Components/TopHeading/TopHeading";
 import Navbar from "../Components/Navbar/Navbar";
 import Login from "../Components/Login/Login";
-import BodyPage from "../Components/BodyPage/BodyPage";
+// import BodyPage from "../Components/BodyPage/BodyPage";
+import Body_1 from "../Components/BodyPage/BodyPage";
+import Footer from "../Components/Footer/Footer";
 const Home = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,11 +27,11 @@ const Home = () => {
   // }, [query]);
   return (
     <div>
-      {/* <Navbar /> */}
-      {/* <Login /> */}
-      {/* <TopHeading /> */}
-      {/* <LandingPage /> */}
-      <BodyPage />
+      <Navbar />
+      <Body_1 />
+      <Box w={"100%"} border="2px solid red" margin={"auto"} bg="black">
+        <Footer />
+      </Box>
     </div>
   );
 };

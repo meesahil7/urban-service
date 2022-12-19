@@ -1,26 +1,47 @@
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Flex, Heading, HStack, Image, Input, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Select, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Input,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Select,
+  Text,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
 import { GrLocation } from "react-icons/gr";
-import Navbar from '../Navbar/Navbar';
-import SearchBar from '../SearchBar/SearchBar';
-import Services from '../Services/Services';
-import styles from './TopHeading.module.css'
-
+import Navbar from "../Navbar/Navbar";
+import SearchBar from "../SearchBar/SearchBar";
+import Services from "../Services/Services";
+import styles from "./TopHeading.module.css";
 
 // ************************************************
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import { ShowLocation, StyledInput } from '../SearchBar/Styles';
-import { ChevronDownIcon } from '@chakra-ui/icons';
-import Suggestion from '../SearchBar/Suggestion';
-
+import { ShowLocation, StyledInput } from "../SearchBar/Styles";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import Suggestion from "../SearchBar/Suggestion";
+import LandingPage from "../LandingPage/LandingPage";
+import Footer from "../Footer/Footer";
 
 //************************************************* */
 function TopHeading() {
-  const [location, setLocation] = useState("")
+  const [location, setLocation] = useState("");
   const [textInput, setTextInput] = useState("");
   const [showLocationDiv, setShowLocationDiv] = useState(false);
   const [address, setAddress] = useState(initAddress);
@@ -30,7 +51,6 @@ function TopHeading() {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-
   };
 
   //console.log(location)
@@ -52,9 +72,8 @@ function TopHeading() {
   };
   return (
     <div>
-      {/* <Navbar /> */}
-      <Box className='homeTopBox'>
-       
+      <Navbar />
+      <Box className="homeTopBox">
         <Box className={styles.homeTopBox}>
           <Container color="whitesmoke" fontSize={"12px"}>
             <Breadcrumb>
@@ -66,7 +85,7 @@ function TopHeading() {
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
-          
+
           <Heading
             as={"h1"}
             fontSize="48px"
@@ -79,14 +98,13 @@ function TopHeading() {
           <br />
           <br />
 
-          
           <Container
             maxW="3xl"
             lineHeight={"24px"}
             h="300px"
             mt="20%"
             position="absolute"
-            className='search'
+            className="search"
           >
             <Flex h="60px" justifyContent={"space-between"}>
               <Flex
@@ -109,78 +127,80 @@ function TopHeading() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent mt="3%" w="50vh" h="150px">
-                    <PopoverHeader fontWeight="semibold">
-
-                    </PopoverHeader>
+                    <PopoverHeader fontWeight="semibold"></PopoverHeader>
                     <PopoverArrow ml="-8rem" />
                     <PopoverCloseButton />
                     <PopoverBody mt="3%" h="40%">
-
-
                       {/* ***************************************************************** */}
-  <Box>
-                      <StyledInput>
-                        <Box
-  
-                          className="locationContainer"
-                          style={{
-                            position: "relative",
-                            // background:"black"
-                          }}
-                        >
-                          <Box width='250px'>
-                            <GrLocation style={{ color: "black", backgorund: "black", width: '20px', marginLeft: '-10px', top: '5px' }} />
-                            <Input
-                              x-webkit-speech
-                              width={'200px'}
-                              className="locationInput"
-                              placeholder={
-                                address.formatted_address.length > 0
-                                  ? address.formatted_address
-                                    .split("")
-                                    .map((a, i) => (i <= 9 ? a : ""))
-                                    .join("") + "..."
-                                  : "India"
-                              }
-                              readOnly
-                              type="text"
-                              onClick={() => setShowLocationDiv(true)}
-                            />
+                      <Box>
+                        <StyledInput>
+                          <Box
+                            className="locationContainer"
+                            style={{
+                              position: "relative",
+                              // background:"black"
+                            }}
+                          >
+                            <Box width="250px">
+                              <GrLocation
+                                style={{
+                                  color: "black",
+                                  backgorund: "black",
+                                  width: "20px",
+                                  marginLeft: "-10px",
+                                  top: "5px",
+                                }}
+                              />
+                              <Input
+                                x-webkit-speech
+                                width={"200px"}
+                                className="locationInput"
+                                placeholder={
+                                  address.formatted_address.length > 0
+                                    ? address.formatted_address
+                                        .split("")
+                                        .map((a, i) => (i <= 9 ? a : ""))
+                                        .join("") + "..."
+                                    : "India"
+                                }
+                                readOnly
+                                type="text"
+                                onClick={() => setShowLocationDiv(true)}
+                              />
 
-                            <ChevronDownIcon className="arrow" style={{ color: "#555" }} />
-                            {showLocationDiv && (
-                              <ShowLocation>
-
-                                {address.formatted_address === "" && (
-
-                                  <Box className="head">
-                                    {/* <GoLocation style={{ color: "#555" }} /> */}
-                                    <Text>Current Location</Text>
-                                    <Text className="blueText" onClick={handleLocation}>
-                                      Detect Using GPS{" "}
-                                    </Text>
-
+                              <ChevronDownIcon
+                                className="arrow"
+                                style={{ color: "#555" }}
+                              />
+                              {showLocationDiv && (
+                                <ShowLocation>
+                                  {address.formatted_address === "" && (
+                                    <Box className="head">
+                                      {/* <GoLocation style={{ color: "#555" }} /> */}
+                                      <Text>Current Location</Text>
+                                      <Text
+                                        className="blueText"
+                                        onClick={handleLocation}
+                                      >
+                                        Detect Using GPS{" "}
+                                      </Text>
+                                    </Box>
+                                  )}
+                                  <Box marginTop={"-15px"}>
+                                    <Text>{address.formatted_address}</Text>
                                   </Box>
-                                )}
-                                <Box marginTop={'-15px'}>
-
-                                  <Text>{address.formatted_address}</Text>
-
-                                </Box>
-                              </ShowLocation>
-                            )}
+                                </ShowLocation>
+                              )}
+                            </Box>
                           </Box>
-                        </Box>
-
-                      </StyledInput>
+                        </StyledInput>
                       </Box>
                       {/* ************************************************************************** */}
                     </PopoverBody>
                   </PopoverContent>
-
                 </Popover>
               </Flex>
-              <Flex w="70%" h="100%" >
+              <Flex w="70%" h="100%">
                 <Button
                   borderRadius={"5px 0 0 5px"}
                   h="100%"
@@ -202,50 +222,49 @@ function TopHeading() {
                 />
               </Flex>
             </Flex>
-
-
           </Container>
 
           <br />
           <Container color="white" marginLeft="37%">
             <Breadcrumb separator=",">
               <BreadcrumbItem>
-                <BreadcrumbLink href="#">Women's Therapies</BreadcrumbLink>
+                <BreadcrumbLink>Women's Therapies</BreadcrumbLink>
               </BreadcrumbItem>
 
               <BreadcrumbItem>
-                <BreadcrumbLink href="#">Salon for Men</BreadcrumbLink>
+                <BreadcrumbLink>Salon for Men</BreadcrumbLink>
               </BreadcrumbItem>
 
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink href="#">Men's Therapies</BreadcrumbLink>
+                <BreadcrumbLink>Men's Therapies</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
-
-
         </Box>
         {/* <ServicesCategory data={cardData} /> */}
-
-     
-        </Box>
-      <HStack boxShadow={'rgba(0, 0, 0, 0.35) 0px 5px 15px;'} width={'100%'} margin='auto'  justifyContent={'center'} position='absolute' top={'600px'} bg='white'  border='2px solid red'>
+      </Box>
+      <HStack
+        // boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
+        width={"100%"}
+        margin={"auto"}
+        justifyContent={"center"}
+        position="absolute"
+        top={"580px"}
+        bg="white"
+        // border="2px solid red"
+      >
         <Services />
       </HStack>
 
-
-
-
-
+      <LandingPage />
+      <Box w={"100%"} border="2px solid red" margin={"auto"} bg="black">
+        <Footer />
+      </Box>
     </div>
-  )
+  );
 }
 
-export default TopHeading
-
-
-
-
+export default TopHeading;
 
 const initAddress = {
   houseNumber: "",
