@@ -30,7 +30,7 @@ import logo from "../Cart/logo.png";
 //   "Login/Sign Up",
 // ];
 
-const NavLink = ({ children } = { children: ReactNode }) => (
+const NavLink = ({ children }) => (
   <Link
     px={2}
     py={1}
