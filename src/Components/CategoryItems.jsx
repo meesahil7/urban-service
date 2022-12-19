@@ -2,7 +2,7 @@ import { Box, Img } from "@chakra-ui/react"
 
 export const CategoryItems = ({id, img, para }) => {
 
-    return <Box  className="h" width={"100%"} filter='auto' brightness='90%'>
+    return <Box  width={"100%"} filter='auto' brightness='90%'>
        
       <Box display={"flex"}  p={"4"} justifyContent={"center"} width={"100%"} >
         <a href={`#${id}`}>

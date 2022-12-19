@@ -42,7 +42,7 @@ export function PopUpForUSsafe(el) {
   
         <Modal
             
-            size="2xl"
+            size="xl"
           onClose={onClose}
           finalFocusRef={btnRef}
           isOpen={isOpen}
@@ -55,16 +55,11 @@ export function PopUpForUSsafe(el) {
         />
           <ModalContent    >
             <ModalCloseButton />
-            <ModalBody  p="0.2" m="0" >
+            <ModalBody p="0.2" m="0" >
                 <Box>
                     <img width={"100%"} src={el.img} alt="" />
-            {/* <ModalHeader>{el.title}</ModalHeader> */}
-                <Box>
-                  <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_736,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1623752701818-e68567.jpeg" alt="img" />
-                  <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1623753474030-d7dfc2.png" alt="img" />
-                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1654064794529-7abb36.png" alt="img" />
-                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_600,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1623753474806-c299a9.png" alt="img" />
-                </Box>
+            <ModalHeader>{el.title}</ModalHeader>
+                <ProductItems  {...el} />
                    
                    
                     

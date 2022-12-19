@@ -20,7 +20,7 @@ import {
   } from '@chakra-ui/react'
 import { ProductItems } from './ProductItems'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCartData, postCartData } from '../Redux/Cart/action'
+import { addCartData } from '../Redux/Cart/action'
 
 export function ScrollingExample(params) {
   const cart=useSelector((store)=>store.CartReducer.cart)
@@ -56,7 +56,7 @@ export function ScrollingExample(params) {
     img:params.img
   }
 
-  dispatch(postCartData(newCartData))
+  dispatch(addCartData(newCartData))
   alert("Product added successfully")
    
    }
@@ -70,7 +70,7 @@ export function ScrollingExample(params) {
     return (
       <>
         {
-          <Box width={"100%"} onClick={onOpen}>
+          <Box onClick={onOpen}>
           
              <ProductItems  {...params} />
             <Divider borderColor='gray.400' />
