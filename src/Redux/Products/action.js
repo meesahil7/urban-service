@@ -1,45 +1,18 @@
+import { ADD_CART_DATA } from "./actionTypes"
 
 
 
 
-
-// export const  addCartData=(payload)=>{
-//     return{
-//         type:ADD_CART_DATA,
-//         payload:payload
-//     }
-// }
-
-
-// const getProductReq=()=>{
-//     return {
-//         type:"PRODUCT_REQ"
-        
-//     }
-// }
-// const getProductSuccess=(payload)=>{
-//    return {type:"PRODUCT_SUCCESS",
-//     payload:payload}
-// }
+export const  addCartData=(payload)=>{
+    return{
+        type:ADD_CART_DATA,
+        payload:payload
+    }
+}
 
 
 
-// const getProductData=(params)=>(dispatch)=>{
-//         dispatch(getProductReq())
 
-//         axios
-//         .get(`http://localhost:8080/${params}`)
-//         .then((res)=>{
-//             // console.log(res.data)
-//             // setTempData(res.data)
-//             dispatch(getProductSuccess(res.data))
-//         })
-
-
-
-// }
-
-// export {getProductData,getProductSuccess}
 
 // getCartData=()=>(dispatch)=>{
 

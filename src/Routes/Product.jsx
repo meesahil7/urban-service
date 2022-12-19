@@ -2,7 +2,6 @@ import { Box, Button, Divider, Flex, Heading, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CategoryItems } from "../Components/CategoryItems";
-import useTimeout from "../Components/DelayLoading";
 import { PopUpForUSsafe } from "../Components/PopUpForUSSafe";
 import { ScrollingExample } from "../Components/PopUpModel";
 import { Link, useParams, useSearchParams } from "react-router-dom";
@@ -11,8 +10,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { getCartRequest } from "../Redux/App/action";
 
-import { getProductData } from "../Redux/App/action";
-import { getCartData } from "../Redux/Cart/action";
+// const youtubeLink = "UwI71cKFR6g"
 
 const Product = () => {
   const [tempData, setTempData] = useState({});
@@ -35,11 +33,7 @@ const Product = () => {
     setTotalCartValue(Sum);
   };
 
-  useEffect(() => {
-    if (cart && cart.length > 0) {
-      CountCartValue();
-    }
-  }, [cart]);
+  // console.log(totalCartValue)
 
   useEffect(() => {
     axios.get(`http://localhost:8080/${id}`).then((res) => {
