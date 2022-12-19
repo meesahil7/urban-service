@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Link as HomeLink } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -67,9 +67,9 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box w="120px" h="120px">
-              <Link to="/topheading">
+              <HomeLink to="/topheading">
                 <Image w={"100%"} h={"100%"} src={logo} />
-              </Link>
+              </HomeLink>
             </Box>
             {/* <HStack
               as={'nav'}
