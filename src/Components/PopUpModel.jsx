@@ -56,7 +56,7 @@ export function ScrollingExample(params) {
     img:params.img
   }
 
-  dispatch(getCartData(newCartData))
+  dispatch(addCartData(newCartData))
   alert("Product added successfully")
    
    }
