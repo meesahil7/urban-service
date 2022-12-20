@@ -43,7 +43,7 @@ export default function Payment({ price, label }) {
 
     const options = {
       key: "rzp_test_qho4K1vu3eyRqY",
-      amount: price * 100 || 1619,
+      amount: price * 100 || 1619*100,
       currency: "INR",
       name: "Urban Service",
       description: "Test Transaction",
