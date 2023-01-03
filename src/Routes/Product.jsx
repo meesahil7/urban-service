@@ -26,7 +26,7 @@ const Product = () => {
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.CartReducer.cart);
   const ProductData = useSelector((store) => store.AppReducer.ProductData);
-  const [totalCartValue, setTotalCartValue] = useState(0);
+  const [totalCartValue, setTotalCartValue] = useState(cart);
 
   const CountCartValue = () => {
     let Sum = 0;

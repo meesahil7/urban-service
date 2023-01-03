@@ -20,7 +20,7 @@ import {
   } from '@chakra-ui/react'
 import { ProductItems } from './ProductItems'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCartData } from '../Redux/Cart/action'
+import { addCartData,getCartData } from '../Redux/Cart/action'
 
 export function ScrollingExample(params) {
   const cart=useSelector((store)=>store.CartReducer.cart)
