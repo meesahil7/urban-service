@@ -12,11 +12,8 @@ const Login = () => {
     setIsOpen((prevState) => !prevState);
   };
   const showOtp = useSelector((store) => store.AuthReducer.showOtp);
-  // console.log(showOtp);
   const [pinInput, setPinInput] = useState("");
-  // console.log(pinInput);
   const isAuth = useSelector((reduxStore) => reduxStore.AuthReducer.isAuth);
-  // console.log(isAuth);
 
   return (
     <>

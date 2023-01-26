@@ -53,8 +53,6 @@ function TopHeading() {
     }
   };
 
-  //console.log(location)
-
   const handleSearch = (e) => {
     setTextInput(e.target.value);
   };

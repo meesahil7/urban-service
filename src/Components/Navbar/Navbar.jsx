@@ -50,7 +50,6 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const blogClick = () => {
-    console.log("sahil");
     navigate("/blog");
   };
 

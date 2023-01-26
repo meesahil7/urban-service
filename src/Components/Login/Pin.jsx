@@ -65,7 +65,6 @@ const Pin = ({ length, perInputBox = 1, setPin, toggleDrawer }) => {
         .then((result) => {
           // User signed in successfully.
           const user = result.user.phoneNumber;
-          console.log(user);
           dispatch(loginSuccess());
           toggleDrawer();
           // ...
@@ -77,7 +76,6 @@ const Pin = ({ length, perInputBox = 1, setPin, toggleDrawer }) => {
         });
     }
   };
-  // console.log(sec);
   return (
     <div>
       <div>

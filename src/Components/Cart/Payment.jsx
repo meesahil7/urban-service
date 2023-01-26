@@ -18,7 +18,6 @@ export default function Payment({ price, label }) {
     cart.forEach((el) => {
       Sum += +el.price;
     });
-    console.log(cart);
     setTotalCartValue(Sum);
   };
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function Payment({ price, label }) {
 
   //   console.log("somehting");
   // }, []);
-  console.log("price", price);
 
   const handlePayment = useCallback(async () => {
     const order = {
@@ -43,7 +41,7 @@ export default function Payment({ price, label }) {
 
     const options = {
       key: "rzp_test_qho4K1vu3eyRqY",
-      amount: price * 100 || 1619*100,
+      amount: price * 100 || 1619 * 100,
       currency: "INR",
       name: "Urban Service",
       description: "Test Transaction",
@@ -73,7 +71,6 @@ export default function Payment({ price, label }) {
     const rzpay = new Razorpay(options);
     rzpay.open();
   }, [Razorpay]);
-  console.log(success);
   return (
     <div className="App">
       <button

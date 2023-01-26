@@ -16,8 +16,6 @@ const addCartData = (payload) => {
 };
 
 const postCartData = (payload) => (dispatch) => {
-  // console.log(payload)
-
   axios
     .post("https://urban-server-new.onrender.com/cart_data", payload)
     .then((res) => {
@@ -31,7 +29,6 @@ const getCartData = (params) => (dispatch) => {
   return axios
     .get(`https://urban-server-new.onrender.com/${"cart_data"}`)
     .then((res) => {
-      // console.log(res.data)
       // setTempData(res.data)
       dispatch(getCartSuccess(res.data));
     });

@@ -1,9 +1,16 @@
-import { Box, Button, Divider, Heading, HStack, Img, Spacer } from "@chakra-ui/react"
-import { useEffect } from "react"
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { addCartData } from "../Redux/Cart/action"
-
+import {
+  Box,
+  Button,
+  Divider,
+  Heading,
+  HStack,
+  Img,
+  Spacer,
+} from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartData } from "../Redux/Cart/action";
 
 //products data structure
 //               "id": "1",
@@ -26,8 +33,6 @@ import { addCartData } from "../Redux/Cart/action"
 //               ]
 //             },
 
-
-
 //               "id": "1",
 //               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100967218-f08380.png",
 //               "title": "Full body",
@@ -44,25 +49,28 @@ import { addCartData } from "../Redux/Cart/action"
 //               ]
 //             },
 
-export const ProductItems = ({id, title, price, time, para, type, guide_Img, img }) => {
+export const ProductItems = ({
+  id,
+  title,
+  price,
+  time,
+  para,
+  type,
+  guide_Img,
+  img,
+}) => {
+  const cart = useSelector((store) => store.CartReducer.cart);
 
-  const cart=useSelector((store)=>store.CartReducer.cart)
-
-
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
 
   // const handleAddToCart=()=>{
   //       let Check=false
   //       cart.forEach((el)=>{
-  //       // console.log(el.id,id)
   //       if(el.id==id){
-  //         console.log(el.id,id)
   //         Check=true
-  //         return 
+  //         return
   //       }
   //     })
-
-  //     // console.log(Check)
 
   //    if(Check){
 
@@ -83,112 +91,102 @@ export const ProductItems = ({id, title, price, time, para, type, guide_Img, img
 
   //    }
 
-   
-    
-
-    
-
   // }
 
-
-  useEffect(()=>{
-
-
-  },[])
+  useEffect(() => {}, []);
 
   if (type == "guide") {
-    // console.log(type)
     return (
-      <Box id={id} textAlign={"left"} >
+      <Box id={id} textAlign={"left"}>
         <Box my={"4"}>
-
-        <Heading>{title}</Heading>
+          <Heading>{title}</Heading>
         </Box>
         <br />
-        
+
         <Img rounded={10} width="95%" src={guide_Img} alt="pic" />
         <br />
       </Box>
-    )
+    );
   }
 
-  if (time&&!img) {
+  if (time && !img) {
     return (
-      <Box   display={"flex"} p="10" justifyContent="space-around"  >
-        <Box textAlign={"left"}  width="80%" >
-
-          <Heading size={"l"} >{title}</Heading>
-          <HStack> <Heading size={"l"}>
-          ₹ {price}
-            </Heading>  <li>{time}</li></HStack>
+      <Box display={"flex"} p="10" justifyContent="space-around">
+        <Box textAlign={"left"} width="80%">
+          <Heading size={"l"}>{title}</Heading>
+          <HStack>
+            {" "}
+            <Heading size={"l"}>₹ {price}</Heading> <li>{time}</li>
+          </HStack>
           {/* <hr /> */}
-          <Box my={2} >
-
-          <Divider  borderColor='blackAlpha' />
+          <Box my={2}>
+            <Divider borderColor="blackAlpha" />
           </Box>
-          {para?.map((el) => <li key={el.id}>{el.para}</li>)}
+          {para?.map((el) => (
+            <li key={el.id}>{el.para}</li>
+          ))}
           <Button>Edit your package</Button>
         </Box>
-        <Box width={"15%"}  >
-          <Box display={"flex"} justifyContent="end" >
-            <Button 
-            
-            // onClick={handleAddToCart}
-            
-            textColor={"violet"} >Add</Button>
-          </Box>
+        <Box width={"15%"}>
+          <Box display={"flex"} justifyContent="end">
+            <Button
+              // onClick={handleAddToCart}
 
+              textColor={"violet"}
+            >
+              Add
+            </Button>
+          </Box>
         </Box>
         {/* <Divider  borderColor='black.200' /> */}
-     
       </Box>
-      
-
-
-
-    )
+    );
   }
 
   // Products With Image
   if (!time) {
-    // console.log(type)
     return (
-      <Box display={"flex"} p="10" justifyContent="space-around"  >
-        <Box flexDirection={"column"} display={"flex"} justifyContent={"space-between"} textAlign={"left"}  width="80%" >
+      <Box display={"flex"} p="10" justifyContent="space-around">
+        <Box
+          flexDirection={"column"}
+          display={"flex"}
+          justifyContent={"space-between"}
+          textAlign={"left"}
+          width="80%"
+        >
           <Heading size="l">{title}</Heading>
           <p>star</p>
           <Heading size={"l"}>Starts at ₹ {price}</Heading>
           {/* <hr /> */}
-          <Box my={2} >
-
-          <Divider  borderColor='black.200' />
+          <Box my={2}>
+            <Divider borderColor="black.200" />
           </Box>
-          {para?.map((el) => <li key={el.id}>{el.para}</li>)}
+          {para?.map((el) => (
+            <li key={el.id}>{el.para}</li>
+          ))}
           <Box>
-
-          <Button textColor="violet" variant={"ghost"} >View details</Button>
+            <Button textColor="violet" variant={"ghost"}>
+              View details
+            </Button>
           </Box>
         </Box>
-        <Box margin={"auto"} width={"15%"}  >
-          <Box  >
-            <Box >
+        <Box margin={"auto"} width={"15%"}>
+          <Box>
+            <Box>
               <Img rounded={"10"} width={"100%"} src={img} alt="img" />
-
             </Box>
           </Box>
 
-          <Button 
-          
-          // onClick={handleAddToCart}
-          
-          position={"relative"} top="-15px">Add</Button>
+          <Button
+            // onClick={handleAddToCart}
+
+            position={"relative"}
+            top="-15px"
+          >
+            Add
+          </Button>
         </Box>
-
       </Box>
-
-
-
-    )
+    );
   }
-
-}
+};

@@ -8,7 +8,6 @@ const CartPage = () => {
   const cart = useSelector((store) => store.CartReducer.cart);
   // console.log(cart);
   const dispatch = useDispatch();
-  console.log(cart);
 
   // const totalCartValue = cart.reduce((ac, cv) => {
   // return Number(ac.price) + Number(cv.price);
@@ -26,7 +25,6 @@ const CartPage = () => {
     cart.forEach((el) => {
       Sum += +el.price;
     });
-    console.log(cart);
     setTotalCartValue(Sum);
   };
   useEffect(() => {

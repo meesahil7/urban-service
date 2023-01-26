@@ -17,8 +17,6 @@ import Im from "../Navbar/Image/mid.png";
 import mobile from "../Navbar/Image/mobile.png";
 import Navbar from "../Navbar/Navbar";
 const Body_1 = () => {
-  console.log(Cities);
-
   const [city, setCity] = useState("");
   const navigate = useNavigate();
 
