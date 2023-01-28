@@ -11,20 +11,21 @@ import Footer from "../Components/Footer/Footer";
 const Home = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
-  // useEffect(() => {
-  //   if (query === "") {
-  //     setSuggestions([]);
-  //   } else {
-  //     let newListofSuggestions = searchServices
-  //       .filter((item) =>
-  //         item.service.toLowerCase().indexOf(query) !== -1 ? true : false
-  //       )
-  //       .map((item) => item.service);
-  //     setSuggestions(newListofSuggestions);
-  //   }
-  //   setTimeout(() => setLoading(false), 1000);
-  // }, [query]);
+  const [suggestions, setSuggestions] = useState(["a","b","c","d"]);
+  useEffect(() => {
+    if (query === "") {
+      setSuggestions([]);
+    } else {
+      let newListofSuggestions = searchServices
+        .filter((item) =>
+          item.service.toLowerCase().indexOf(query) !== -1 ? true : false
+        )
+        .map((item) => item.service);
+      setSuggestions(newListofSuggestions);
+    }
+    setTimeout(() => setLoading(false), 1000);
+  }, [query]);
+  // console.log(suggestions)
   return (
     <div>
       <Navbar />

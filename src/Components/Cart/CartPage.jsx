@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCartData } from "../../Redux/Cart/action";
 import "./cartPage.css";
 import Payment from "./Payment";
 
@@ -143,9 +142,9 @@ const CartPage = () => {
             <div className="yay">Yay! You saved ₹899 on final bill</div>
           </div>
           <div>
-            <button className="pay-btn">
+            <div className="pay-btn">
               <Payment price={totalCartValue} />
-            </button>
+            </div>
           </div>
         </div>
       </div>

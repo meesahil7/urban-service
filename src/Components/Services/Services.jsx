@@ -57,7 +57,7 @@ function Services() {
                   <Box h="50%">
                     <Text
                       fontSize="16px"
-                      as="bold"
+                      as="b"
                       textAlign={"left"}
                       marginTop="10px"
                     >

@@ -12,10 +12,10 @@ import {
 import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { CategoryItems } from "../Components/CategoryItems";
-import useTimeout from "../Components/DelayLoading";
-import { PopUpForUSsafe } from "../Components/PopUpForUSSafe";
-import { ScrollingExample } from "../Components/PopUpModel";
+import { CategoryItems } from "../Components/Products/CategoryItems"
+import useTimeout from "../Components/Products/DelayLoading";
+import { PopUpForUSsafe } from "../Components/Products/PopUpForUSSafe";
+import { ScrollingExample } from "../Components/Products/PopUpModel";
 
 import { getProductData } from "../Redux/App/action";
 import { getCartData } from "../Redux/Cart/action";
@@ -133,7 +133,7 @@ const Product = () => {
 
           bg={"white"}
 
-          // borderBottom={"0.1px solid gray"}
+        // borderBottom={"0.1px solid gray"}
         >
           {/* {!ProductData.categories&&<Skeleton display={"flex"} h="20" width="full"/>} */}
 

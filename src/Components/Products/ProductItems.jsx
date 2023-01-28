@@ -10,7 +10,7 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartData } from "../Redux/Cart/action";
+import { addCartData } from "../../Redux/Cart/action";
 
 //products data structure
 //               "id": "1",

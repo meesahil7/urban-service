@@ -20,6 +20,3 @@ const getProductData = (params) => (dispatch) => {
 
 export { getProductData, getProductSuccess };
 
-// getCartData=()=>(dispatch)=>{
-
-// }
