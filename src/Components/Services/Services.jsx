@@ -32,8 +32,17 @@ function Services() {
   return (
     <div
       style={{
+        position:"relative",
+        bottom:"60px",
+        borderRadius:".3rem",
+        paddingRight:"2rem",
+        paddingLeft:"2rem"
+        ,
+       
+        paddingTop:".4rem",
+        paddingBottom:".4rem",
         width: "50%",
-        height: "140px",
+        // height: "160px",
         boxShadow:
           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
         background: "white",
@@ -46,10 +55,12 @@ function Services() {
         boxShadow={"20px"}
         borderRadius="10px"
       >
-        <Grid templateColumns="repeat(5, 1fr)" gap={"10px"} w="100%">
+        <Grid templateColumns="repeat(5, 1fr)" m="auto" gap={"10px"} w="100%">
           {cardData.map((ele, index) => {
             return (
-              <GridItem w="100%" h="180px" key={index}>
+              <GridItem 
+              w="100%"
+                key={index}>
                 <Link to={ele.route}>
                   <Box h="50%">
                     <Image src={ele.logo} w="70%" h={"80%"} m="auto" />
@@ -57,7 +68,7 @@ function Services() {
                   <Box h="50%">
                     <Text
                       fontSize="16px"
-                      as="bold"
+                      as="b"
                       textAlign={"left"}
                       marginTop="10px"
                     >

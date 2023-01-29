@@ -23,7 +23,7 @@ const Body_1 = () => {
   const handleChange = (value) => {
     setCity(value);
     localStorage.setItem("location", value);
-    navigate(`/${value}`);
+    navigate(`/topheading/${value}`);
   };
 
   return (

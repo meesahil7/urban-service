@@ -108,9 +108,9 @@ export default function Navbar() {
                 <NavLink>Register As A Professional</NavLink>
                 <NavLink>Help Center</NavLink>
                 <NavLink>
-                  <button>
+                  <Box>
                     <Login />
-                  </button>
+                  </Box>
                 </NavLink>
               </HStack>
             </Menu>

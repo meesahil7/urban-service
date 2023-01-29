@@ -14,11 +14,6 @@ export const  addCartData=(payload)=>{
 
 
 
-// getCartData=()=>(dispatch)=>{
-
-
-// }
-
 
 
 

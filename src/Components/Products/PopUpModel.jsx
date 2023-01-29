@@ -1,26 +1,11 @@
-import React from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Stack,
-  Radio,
-  RadioGroup,
-  Button,
-  Box,
-  Img,
-  Divider,
-  Spacer,
-  StackDivider,
+  Box, Button, Divider, Modal, ModalBody,
+  ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure
 } from "@chakra-ui/react";
-import { ProductItems } from "./ProductItems";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartData, getCartData } from "../Redux/Cart/action";
+import { addCartData } from "../../Redux/Cart/action";
+import { ProductItems } from "./ProductItems";
 
 export function ScrollingExample(params) {
   const cart = useSelector((store) => store.CartReducer.cart);
