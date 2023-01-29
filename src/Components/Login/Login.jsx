@@ -20,27 +20,29 @@ const Login = () => {
       <button onClick={toggleDrawer}>
         {isAuth ? "Verified Customer" : "Login / Sign Up"}
       </button>
-      <Drawer
-        open={isOpen}
-        onClose={toggleDrawer}
-        direction="right"
-        className="bla bla bla"
-        size={"360px"}
-      >
-        <h3 id="title">Please login to continue</h3>
-        {/* <Pin length={6} perInputBox={1} setPin={setPinInput} /> */}
-        {/* <NumberInput otp={pinInput} /> */}
-        {showOtp ? (
-          <Pin
-            length={6}
-            perInputBox={1}
-            setPin={setPinInput}
-            toggleDrawer={toggleDrawer}
-          />
-        ) : (
-          <NumberInput />
-        )}
-      </Drawer>
+      {!isAuth && (
+        <Drawer
+          open={isOpen}
+          onClose={toggleDrawer}
+          direction="right"
+          className="bla bla bla"
+          size={"360px"}
+        >
+          <h3 id="title">Please login to continue</h3>
+          {/* <Pin length={6} perInputBox={1} setPin={setPinInput} /> */}
+          {/* <NumberInput otp={pinInput} /> */}
+          {showOtp ? (
+            <Pin
+              length={6}
+              perInputBox={1}
+              setPin={setPinInput}
+              toggleDrawer={toggleDrawer}
+            />
+          ) : (
+            <NumberInput />
+          )}
+        </Drawer>
+      )}
     </>
   );
 };

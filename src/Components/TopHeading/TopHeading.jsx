@@ -255,7 +255,7 @@ function TopHeading() {
       </HStack>
 
       <LandingPage />
-      <Box w={"100%"} border="2px solid red" margin={"auto"} bg="black">
+      <Box w={"100%"} margin={"auto"} bg="black">
         <Footer />
       </Box>
     </div>
