@@ -12,42 +12,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartData } from "../../Redux/Cart/action";
 
-//products data structure
-//               "id": "1",
-//               "title": "Full chocolate | chocolate roll-on wacxing",
-//               "price": "₹849",
-//               "time": "1 hr 5 mins",
-//               "para": [
-//                 {
-//                   "id": "1",
-//                   "para": "Eyebrow threading"
-//                 },
-//                 {
-//                   "id": "2",
-//                   "para": "Chocolate full arms, underarms, full legs"
-//                 },
-//                 {
-//                   "id": "3",
-//                   "para": "Upper lip threading"
-//                 }
-//               ]
-//             },
-
-//               "id": "1",
-//               "img": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/growth/luminosity/1657100967218-f08380.png",
-//               "title": "Full body",
-//               "price": "₹1399",
-//               "para": [
-//                 {
-//                   "id": "1",
-//                   "para": "O3+ shine & glow facial"
-//                 },
-//                 {
-//                   "id": "2",
-//                   "para": "Upper lip threading"
-//                 }
-//               ]
-//             },
 
 export const ProductItems = ({
   id,
@@ -63,37 +27,9 @@ export const ProductItems = ({
 
   const dispatch = useDispatch();
 
-  // const handleAddToCart=()=>{
-  //       let Check=false
-  //       cart.forEach((el)=>{
-  //       if(el.id==id){
-  //         Check=true
-  //         return
-  //       }
-  //     })
 
-  //    if(Check){
 
-  //      alert("Product is already added")
-  //       return
-  //    }else{
-  //      let newCartData={
-  //     id:id,
-  //     title:title,
-  //     price:price,
-  //     time:time,
-  //     para:para,
-  //     img:img
-  //   }
 
-  //   dispatch(addCartData(newCartData))
-  //   alert("Product added successfully")
-
-  //    }
-
-  // }
-
-  useEffect(() => {}, []);
 
   if (type == "guide") {
     return (

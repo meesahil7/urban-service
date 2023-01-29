@@ -37,6 +37,7 @@ export default function SearchBar() {
     const [address, setAddress] = useState(initAddress);
     const handleLocation = () => {
       if (navigator.geolocation) {
+        console.log(getCoordinates)
         navigator.geolocation.getCurrentPosition(getCoordinates);
       } else {
         alert("Geolocation is not supported by this browser.");

@@ -80,7 +80,7 @@
     );
     width: 100%;
     height: 100%;
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
 
     font-weight: bold;
     position: absolute;

@@ -66,7 +66,7 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box w="120px" h="120px">
-              <HomeLink to="/topheading">
+              <HomeLink to="/topheading/delhi">
                 <Image w={"100%"} h={"100%"} src={logo} />
               </HomeLink>
             </Box>
