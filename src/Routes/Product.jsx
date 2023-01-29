@@ -57,11 +57,10 @@ const Product = () => {
         my={"10"}
         py={"10"}
         style={{
-          // width: "100%",
-          // border: "1px solid red",
+        
           display: "flex",
           justifyContent: "space-evenly",
-          // flexWrap: "wrap"
+        
         }}
       >
         <Box margin={"auto"} p="5" w={"100%"} textAlign={"left"}>
