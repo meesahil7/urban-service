@@ -16,7 +16,7 @@ const Home = () => {
     if (query === "") {
       setSuggestions([]);
     } else {
-      let newListofSuggestions = searchServices
+      let newListofSuggestions = suggestions
         .filter((item) =>
           item.service.toLowerCase().indexOf(query) !== -1 ? true : false
         )
