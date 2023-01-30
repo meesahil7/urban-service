@@ -1,12 +1,13 @@
 import axios from "axios";
+import * as types from "./actionTypes";
 
 const getProductReq = () => {
   return {
-    type: "PRODUCT_REQ",
+    type: types.PRODUCT_REQ,
   };
 };
 const getProductSuccess = (payload) => {
-  return { type: "PRODUCT_SUCCESS", payload: payload };
+  return { type: types.PRODUCT_SUCCESS, payload: payload };
 };
 
 const getProductData = (params) => (dispatch) => {
@@ -19,4 +20,3 @@ const getProductData = (params) => (dispatch) => {
 };
 
 export { getProductData, getProductSuccess };
-

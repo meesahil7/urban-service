@@ -1,5 +1,5 @@
-
 import React from "react";
+import * as types from "./actionTypes";
 
 const initState = {
   ProductData: [],
@@ -9,14 +9,14 @@ const initState = {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case "PRODUCT_SUCCESS":
+    case types.PRODUCT_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isError: false,
         ProductData: action.payload,
       };
-    case "PRODUCT_REQ":
+    case types.PRODUCT_SUCCESS:
       return { ...state, isLoading: true, isError: false };
     default:
       return state;
