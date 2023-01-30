@@ -28,7 +28,7 @@ import Navbar from "../Navbar/Navbar";
 import SearchBar from "../SearchBar/SearchBar";
 import Services from "../Services/Services";
 import styles from "./TopHeading.module.css";
-
+import { useParams } from "react-router-dom";
 // ************************************************
 import { Link } from "react-router-dom";
 
@@ -41,6 +41,7 @@ import Footer from "../Footer/Footer";
 
 //************************************************* */
 function TopHeading() {
+  const City=useParams()
   const [location, setLocation] = useState("");
   const [textInput, setTextInput] = useState("");
   const [showLocationDiv, setShowLocationDiv] = useState(false);
@@ -64,6 +65,7 @@ function TopHeading() {
         `https://apis.mapmyindia.com/advancedmaps/v1/6hm1qanekr738vwho6stcqgyo47wrt4w/rev_geocode?lat=${latitude}&lng=${longitude}`
       )
       .then((res) => {
+        // console.log(res.data.results[0])
         setAddress(res.data.results[0]);
       })
       .catch(console.error);
@@ -117,7 +119,7 @@ function TopHeading() {
                   alt="flag"
                   m="5%"
                 />
-                {/* <Text>{selectedCity}</Text> */}
+                <Text>{ address.city? address.city: City.id}</Text>
                 <Popover isLazy>
                   <PopoverTrigger>
                     <Button bg="whitesmoke">
@@ -150,7 +152,7 @@ function TopHeading() {
                                 }}
                               />
                               <Input
-                                x-webkit-speech
+                                // x-webkit-speech
                                 width={"200px"}
                                 className="locationInput"
                                 placeholder={

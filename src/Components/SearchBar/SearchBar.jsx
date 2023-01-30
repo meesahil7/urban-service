@@ -9,7 +9,7 @@ import { ChevronDownIcon, CloseIcon, Search2Icon } from "@chakra-ui/icons";
 import { GoLocation } from "react-icons/go";
 import { ShowLocation, StyledInput } from "./Styles";
 import { Box, Input, Text } from "@chakra-ui/react";
-
+import { useParams } from "react-router-dom";
 const initAddress = {
 //   houseNumber: "",
 //   houseName: "",
@@ -32,12 +32,14 @@ const initAddress = {
   formatted_address: "",
 };
 export default function SearchBar() {
+  const Params=useParams()
     const [textInput, setTextInput] = useState("");
-    const [showLocationDiv, setShowLocationDiv] = useState(false);
+    const [showLocationDiv, setShowLocationDiv] = useState();
     const [address, setAddress] = useState(initAddress);
     const handleLocation = () => {
+      console.log("HandleLocationFn")
       if (navigator.geolocation) {
-        console.log(getCoordinates)
+     
         navigator.geolocation.getCurrentPosition(getCoordinates);
       } else {
         alert("Geolocation is not supported by this browser.");
@@ -55,6 +57,7 @@ export default function SearchBar() {
           `https://apis.mapmyindia.com/advancedmaps/v1/6hm1qanekr738vwho6stcqgyo47wrt4w/rev_geocode?lat=${latitude}&lng=${longitude}`
         )
         .then((res) => {
+          console.log(res)
           setAddress(res.data.results[0]);
         })
         .catch(console.error);
@@ -62,7 +65,7 @@ export default function SearchBar() {
     return (
       <StyledInput>
         <div
-        
+      
           className="locationContainer"
           style={{
             position: "relative",
@@ -73,6 +76,7 @@ export default function SearchBar() {
             <GrLocation style={{ color: "black",backgorund:"black" ,width:'20px',marginLeft:'-10px',top:'5px'}}  />
           <Input
           width={'200px'}
+          border="1px solid blue"
             className="locationInput"
             placeholder={
               address.formatted_address.length > 0
@@ -80,11 +84,13 @@ export default function SearchBar() {
                     .split("")
                     .map((a, i) => (i <= 9 ? a : ""))
                     .join("") + "..."
-                : "India"
+                :"India"
+                // Params.id
             }
             readOnly
             type="text"
-            onClick={() => setShowLocationDiv(true)}
+            // onClick={() => setShowLocationDiv(true)
+            // }
           />
          
           <ChevronDownIcon className="arrow" style={{ color: "#555" }} />
@@ -92,11 +98,12 @@ export default function SearchBar() {
             <ShowLocation>
              
               {address.formatted_address === "" && (
-                <Box className="head">
+                <Box border={"1px solid blue"} className="head">
                   {/* <GoLocation style={{ color: "#555" }} /> */}
-                  <Text>Current Location</Text>
+                  <Text >Current</Text>
                   <Text className="blueText" onClick={handleLocation}>
-                    Detect Using GPS{" "}
+                    Detect Using GPS{""}
+
                   </Text>
                   
                 </Box>
