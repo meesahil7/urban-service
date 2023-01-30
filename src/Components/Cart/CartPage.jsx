@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./cartPage.css";
 import Payment from "./Payment";
 
 const CartPage = () => {
   const cart = useSelector((store) => store.CartReducer.cart);
-  // console.log(cart);
-  const dispatch = useDispatch();
-
-  // const totalCartValue = cart.reduce((ac, cv) => {
-  // return Number(ac.price) + Number(cv.price);
-  // });
-  // console.log(totalCartValue);
-  // const totalBill = totalCartValue + 158;
-  // useEffect(() => {
-  //   dispatch(getCartData());
-  // }, []);
-
+  const [totalDiscount, setTotalDiscount] = useState(899);
   const [totalCartValue, setTotalCartValue] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [memberDiscount, setMemberDiscount] = useState({
+    value: 150,
+    bool: true,
+  });
 
   const CountCartValue = () => {
     let Sum = 0;
@@ -30,6 +24,22 @@ const CartPage = () => {
     CountCartValue();
   }, [cart]);
 
+  const removeClick = () => {
+    setMemberDiscount(memberDiscount.bool === false);
+    setTotalDiscount(50);
+    setTotalCartValue(totalCartValue - 149);
+  };
+
+  const handleIncrease = (value) => {
+    setQuantity(quantity + 1);
+    setTotalCartValue(totalCartValue + Number(value));
+  };
+
+  const handleDecrease = (value) => {
+    setQuantity(quantity - 1);
+    setTotalCartValue(totalCartValue - Number(value));
+  };
+
   return (
     <div className="body">
       <div className="heading">
@@ -38,8 +48,12 @@ const CartPage = () => {
       <div className="container">
         <div>
           <div className="para1">
-            <p>You're saving total ₹899 on this order!</p>
-            <p style={{ color: "#6E42E5" }}>Including ₹150 with plus</p>
+            <p>You're saving total ₹{totalDiscount} on this order!</p>
+            {memberDiscount.bool && (
+              <p style={{ color: "#6E42E5" }}>
+                Including ₹{memberDiscount.value} with plus
+              </p>
+            )}
           </div>
           <div style={{ marginTop: "34px" }}>
             {cart &&
@@ -57,9 +71,20 @@ const CartPage = () => {
                         }}
                       >
                         <div className="price1">
-                          <button style={{ marginRight: "15px" }}>-</button>
-                          <p>1</p>
-                          <button style={{ marginLeft: "15px" }}>+</button>
+                          <button
+                            disabled={quantity === 1}
+                            onClick={() => handleDecrease(item.price)}
+                            style={{ marginRight: "15px" }}
+                          >
+                            -
+                          </button>
+                          <p>{quantity}</p>
+                          <button
+                            onClick={() => handleIncrease(item.price)}
+                            style={{ marginLeft: "15px" }}
+                          >
+                            +
+                          </button>
                         </div>
                         <div>
                           <p>₹{item.price}</p>
@@ -81,23 +106,29 @@ const CartPage = () => {
                 );
               })}
           </div>
-          <div className="last">
-            <div>
-              <h2>Plus Membership</h2>
-              <p style={{ fontSize: "14px", color: "grey", marginTop: "5px" }}>
-                12 months
-              </p>
-            </div>
-            <div className="price2">
+          {memberDiscount.bool && (
+            <div className="last">
               <div>
-                <button className="rmv-btn">Remove</button>
+                <h2>Plus Membership</h2>
+                <p
+                  style={{ fontSize: "14px", color: "grey", marginTop: "5px" }}
+                >
+                  12 months
+                </p>
               </div>
-              <div>
-                <p>₹299</p>
-                <p style={{ textDecoration: "line-through" }}>₹999</p>
+              <div className="price2">
+                <div>
+                  <button onClick={removeClick} className="rmv-btn">
+                    Remove
+                  </button>
+                </div>
+                <div>
+                  <p>₹299</p>
+                  <p style={{ textDecoration: "line-through" }}>₹999</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <div className="border"></div>
         </div>
         <div className="right-container">
@@ -113,23 +144,30 @@ const CartPage = () => {
               <p>Item discount</p>
               <p style={{ color: "teal" }}>-₹50</p>
             </div>
-            <div className="same">
-              <p>Membership discount</p>
-              <p style={{ color: "teal" }}>-₹150</p>
-            </div>
+            {memberDiscount.bool && (
+              <div className="same">
+                <p>Membership discount</p>
+                <p style={{ color: "teal" }}>-₹{memberDiscount.value}</p>
+              </div>
+            )}
             <div className="same">
               <p id="tax">Taxes and Fee</p>
               <p>₹59</p>
             </div>
-            <div className="same">
-              <p>Plus Membership</p>
-              <p
-                style={{ textDecoration: "line-through", marginLeft: "220px" }}
-              >
-                ₹999
-              </p>
-              <p>₹299</p>
-            </div>
+            {memberDiscount.bool && (
+              <div className="same">
+                <p>Plus Membership</p>
+                <p
+                  style={{
+                    textDecoration: "line-through",
+                    marginLeft: "220px",
+                  }}
+                >
+                  ₹999
+                </p>
+                <p>₹299</p>
+              </div>
+            )}
           </div>
           <div className="total-bill">
             <div
@@ -137,13 +175,15 @@ const CartPage = () => {
               style={{ fontWeight: "bold", marginBottom: "15px" }}
             >
               <h2>Total</h2>
-              <p>₹{totalCartValue}</p>
+              <p>₹{totalCartValue + 158}</p>
             </div>
-            <div className="yay">Yay! You saved ₹899 on final bill</div>
+            <div className="yay">
+              Yay! You saved ₹{totalDiscount} on final bill
+            </div>
           </div>
           <div>
             <div className="pay-btn">
-              <Payment price={totalCartValue} />
+              <Payment total={totalCartValue + 158} />
             </div>
           </div>
         </div>
