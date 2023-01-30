@@ -49,10 +49,10 @@ const Product = () => {
     dispatch(getProductData(id));
   }, [id]);
 
-  if ('scrollRestoration' in history) {
-    // Back off, browser, I got this...
-    history.scrollRestoration = 'manual';
-  }
+//   if ('scrollRestoration' in history) {
+//     // Back off, browser, I got this...
+//     history.scrollRestoration = 'manual';
+//   }
 
 //   history(window,'statechange',function(){ // Note: We are using statechange instead of popstate
 //     var State = History.getState(); // Note: We are using History.getState() instead of event.state
