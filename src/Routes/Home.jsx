@@ -1,12 +1,8 @@
 import React from "react";
-import LandingPage from "../Components/LandingPage/LandingPage";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import TopHeading from "../Components/TopHeading/TopHeading";
 import Navbar from "../Components/Navbar/Navbar";
-import Login from "../Components/Login/Login";
-// import BodyPage from "../Components/BodyPage/BodyPage";
-import Body_1 from "../Components/BodyPage/BodyPage";
+import Body from "../Components/BodyPage/BodyPage";
 import Footer from "../Components/Footer/Footer";
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -25,11 +21,10 @@ const Home = () => {
     }
     setTimeout(() => setLoading(false), 1000);
   }, [query]);
-  // console.log(suggestions)
   return (
     <div>
       <Navbar />
-      <Body_1 />
+      <Body />
       <Box w={"100%"} margin={"auto"} bg="black">
         <Footer />
       </Box>

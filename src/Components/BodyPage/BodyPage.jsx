@@ -1,22 +1,13 @@
-import {
-  Box,
-  HStack,
-  Image,
-  Select,
-  Stack,
-  Text,
-  Textarea,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Image, Select, Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import woman from "../Navbar/Image/Banner.png";
 import { Cities } from "./Cities";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./BodyPage.css";
 import Im from "../Navbar/Image/mid.png";
 import mobile from "../Navbar/Image/mobile.png";
-import Navbar from "../Navbar/Navbar";
-const Body_1 = () => {
+
+const Body = () => {
   const [city, setCity] = useState("");
   const navigate = useNavigate();
 
@@ -114,4 +105,4 @@ const Body_1 = () => {
   );
 };
 
-export default Body_1;
+export default Body;
