@@ -8,6 +8,14 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/store";
 import { ChakraProvider } from "@chakra-ui/react";
 
+{/* <script type="text/javascript">
+window.history.forward();
+function noBack() {
+    window.history.forward();
+}
+</script> */}
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider>

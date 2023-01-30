@@ -5,7 +5,7 @@ import { StyledFooter } from './FooterStyle'
 
 function Footer() {
   return (
-    <div style={{width:"80%",margin:'auto'}}>
+    <div  style={{width:"80%",margin:'auto',paddingTop:"2rem"}}>
    <Stack color={'white'} bg={'black'} width={'100%'}   margin={'auto'}>
     <Box display={'flex'} gap='20px' w={'100%'}>
        <Link> <Text>About</Text></Link>
