@@ -7,12 +7,12 @@ import {
   Skeleton,
   SkeletonCircle,
   SkeletonText,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { CategoryItems } from "../Components/Products/CategoryItems"
+import { CategoryItems } from "../Components/Products/CategoryItems";
 import useTimeout from "../Components/Products/DelayLoading";
 import { PopUpForUSsafe } from "../Components/Products/PopUpForUSSafe";
 import { ScrollingExample } from "../Components/Products/PopUpModel";
@@ -41,14 +41,19 @@ const Product = () => {
     if (cart && cart.length > 0) {
       CountCartValue();
     }
+
+
   }, [cart]);
 
   useEffect(() => {
+
     CountCartValue();
     dispatch(getCartData());
     dispatch(getProductData(id));
-  }, [id]);
 
+
+  }, [id]);
+// console.log(cart)
 //   if ('scrollRestoration' in history) {
 //     // Back off, browser, I got this...
 //     history.scrollRestoration = 'manual';

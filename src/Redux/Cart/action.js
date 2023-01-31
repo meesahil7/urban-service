@@ -20,8 +20,20 @@ const postCartData = (payload) => (dispatch) => {
     .post("https://urban-server-new.onrender.com/cart_data", payload)
     .then((res) => {
       dispatch(getCartData());
+
     });
 };
+
+const deleteCartData=(payload)=>(dispatch)=>{
+  axios.delete(`https://urban-server-new.onrender.com/cart_data/${payload}`).then((res)=>{
+    dispatch(getCartData())
+  })
+}
+const updateCartData=(id,payload)=>(dispatch)=>{
+  axios.patch(`https://urban-server-new.onrender.com/cart_data/${id}`,payload).then((res)=>{
+    dispatch(getCartData())
+  })
+}
 
 const getCartData = (params) => (dispatch) => {
   // dispatch(getProductReq())
@@ -33,4 +45,9 @@ const getCartData = (params) => (dispatch) => {
       dispatch(getCartSuccess(res.data));
     });
 };
-export { getCartData, addCartData, postCartData };
+
+
+
+
+
+export { getCartData, addCartData, postCartData,deleteCartData,updateCartData };

@@ -4,7 +4,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartData } from "../../Redux/Cart/action";
+import { addCartData, postCartData } from "../../Redux/Cart/action";
 import { ProductItems } from "./ProductItems";
 
 export function ScrollingExample(params) {
@@ -33,8 +33,10 @@ export function ScrollingExample(params) {
         time: params.time,
         para: params.para,
         img: params.img,
+        qty:1
       };
-
+      
+      dispatch(postCartData(newCartData))
       dispatch(addCartData(newCartData));
       alert("Product added successfully");
     }

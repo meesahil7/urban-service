@@ -1,9 +1,12 @@
+import { Box, Button } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCartData, getCartData, updateCartData } from "../../Redux/Cart/action";
 import "./cartPage.css";
 import Payment from "./Payment";
 
 const CartPage = () => {
+  const dispatch=useDispatch()
   const cart = useSelector((store) => store.CartReducer.cart);
   const [totalDiscount, setTotalDiscount] = useState(899);
   const [totalCartValue, setTotalCartValue] = useState(0);
@@ -13,16 +16,17 @@ const CartPage = () => {
     bool: true,
   });
 
-  const CountCartValue = () => {
+
+  const CountCartValue = () => {  dispatch(getCartData())
     let Sum = 0;
     cart.forEach((el) => {
-      Sum += +el.price;
+      Sum += +el.price*el.qty;
     });
     setTotalCartValue(Sum);
   };
   useEffect(() => {
     CountCartValue();
-  }, [cart]);
+  }, [cart.length]);
 
   const removeClick = () => {
     setMemberDiscount(memberDiscount.bool === false);
@@ -30,15 +34,22 @@ const CartPage = () => {
     setTotalCartValue(totalCartValue - 149);
   };
 
-  const handleIncrease = (value) => {
-    setQuantity(quantity + 1);
+  const handleIncrease = (id,qty,value) => {
+    const newCdata={qty:qty+1}
+    // console.log(qty)
+    dispatch(updateCartData(id,newCdata))
+    // setQuantity(quantity + 1);
     setTotalCartValue(totalCartValue + Number(value));
   };
-
-  const handleDecrease = (value) => {
-    setQuantity(quantity - 1);
+  const handleDecrease = (id,qty,value) => {
+    const newCdata={qty:qty-1}
+    // console.log(qty)
+    dispatch(updateCartData(id,newCdata))
+    // setQuantity(quantity + 1);
     setTotalCartValue(totalCartValue - Number(value));
   };
+
+
 
   return (
     <div className="body">
@@ -72,15 +83,15 @@ const CartPage = () => {
                       >
                         <div className="price1">
                           <button
-                            disabled={quantity === 1}
-                            onClick={() => handleDecrease(item.price)}
+                            disabled={item.qty==1}
+                            onClick={()=>handleDecrease(item.id,item.qty,item.price)}
                             style={{ marginRight: "15px" }}
                           >
-                            -
+                            - 
                           </button>
-                          <p>{quantity}</p>
+                          <p>{item.qty}</p>
                           <button
-                            onClick={() => handleIncrease(item.price)}
+                            onClick={() => handleIncrease(item.id,item.qty,item.price)}
                             style={{ marginLeft: "15px" }}
                           >
                             +
@@ -101,7 +112,11 @@ const CartPage = () => {
                           );
                         })}
                     </div>
-                    <button className="edit-btn">Edit Package</button>
+                    <div style={{display:"flex",justifyContent:"flex-end"}} >
+                    {/* <button className="edit-btn">Edit Package</button> */}
+
+                    <Button colorScheme={"red"} onClick={()=>dispatch(deleteCartData(item.id))}>Remove</Button>
+                    </div>
                   </div>
                 );
               })}
