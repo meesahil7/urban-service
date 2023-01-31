@@ -9,7 +9,7 @@
 
 ## IA Manager - Sanjaykumar Verma
 
-Check the live site <a href="https://quack-spoon-1626.vercel.app/" target="_blank">here</a>
+Check the live site <a href="https://urban-service-xi.vercel.app/" target="_blank">here</a>
 
 External dependencies used in the project are ---
 1. Chakra UI
